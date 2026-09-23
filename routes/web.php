@@ -27,8 +27,12 @@ use App\Models\User;
 use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('acceuil');
+})->name('home');
+
+Route::get('/accueil', function () {
+    return view('acceuil');
+})->name('acceuil');
 
 Route::get('/search', function (Request $request) {
     return view('welcome', ['q' => $request->q]);
