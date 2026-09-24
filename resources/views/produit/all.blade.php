@@ -19,6 +19,8 @@
                     <li>
                         <a href="{{ route('produit.show', $produit->id) }}">{{ $produit->name }}</a>
                         <span>{{ $produit->price }}</span>
+                        <a href="{{ route('produit.edit_view', $produit->id) }}">Modifier</a>
+                        <a href="{{ route('produit.delete', $produit->id) }}">Supprimer</a>
                     </li>
                 @endforeach
             </ul>

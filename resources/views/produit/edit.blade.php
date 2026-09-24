@@ -48,7 +48,7 @@
 
             <div class="actions-row">
                 <button type="submit" class="button success">Mettre à jour</button>
-                <a class="back" href="{{ route('boutique.show', $produit->boutique_id) }}">Retour à la boutique</a>
+                <a class="back" href="{{ route('boutique.produits', $produit->boutique_id) }}">Retour aux produits</a>
             </div>
         </form>
     </div>

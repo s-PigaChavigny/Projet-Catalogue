@@ -49,7 +49,12 @@
 
             <div class="actions-row">
                 <button type="submit" class="button primary">Enregistrer</button>
-                <a class="back" href="{{ route('boutique.list') }}">Retour aux boutiques</a>
+                @php($selectedBoutiqueId = old('boutique_id', auth()->user()->boutique_id))
+                @if($selectedBoutiqueId)
+                    <a class="back" href="{{ route('boutique.produits', $selectedBoutiqueId) }}">Retour aux produits</a>
+                @else
+                    <a class="back" href="{{ route('boutique.list') }}">Retour aux boutiques</a>
+                @endif
             </div>
         </form>
     </div>

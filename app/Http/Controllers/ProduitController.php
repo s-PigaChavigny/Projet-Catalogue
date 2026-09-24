@@ -36,7 +36,7 @@ class ProduitController extends Controller
     {
         $produit = Produit::findOrFail($id);
         $produit->delete();
-        return redirect()->route('boutique.show', $produit->boutique_id);
+        return redirect()->back();
     }
 
     public function create(Request $request)
@@ -60,7 +60,7 @@ class ProduitController extends Controller
             "boutique_id" => $data['boutique_id'],
             "image_path" => $imagePath
         ]);
-        return redirect()->route('boutique.show', $produit->boutique_id);
+        return redirect()->route('boutique.produits', $produit->boutique_id);
     }
 
     public function edit_view($id)
@@ -89,6 +89,6 @@ class ProduitController extends Controller
             $produit->image_path = UploadedImage::store($request->file('image'), 'produit', $data['name']);
         }
         $produit->save();
-        return redirect()->route('boutique.show', $produit->boutique_id);
+        return redirect()->route('boutique.produits', $produit->boutique_id);
     }
 }
