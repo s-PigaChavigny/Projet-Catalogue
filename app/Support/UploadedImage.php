@@ -9,12 +9,13 @@ class UploadedImage
 {
     public static function store(UploadedFile $image, string $folder, string $name): string
     {
-        $directory = public_path($folder);
+        $imageFolder = 'image-' . $folder;
+        $directory = public_path($imageFolder);
         if (! is_dir($directory)) {
             mkdir($directory, 0755, true);
         }
 
-        $baseName = Str::slug($name) ?: 'image';
+        $baseName = Str::slug($name) ?: 'sans-nom';
         $extension = strtolower($image->getClientOriginalExtension());
         $nameWithSuffix = $baseName;
         $fileName = $nameWithSuffix . '.' . $extension;
@@ -28,6 +29,6 @@ class UploadedImage
 
         $image->move($directory, $fileName);
 
-        return $folder . '/' . $fileName;
+        return $imageFolder . '/' . $fileName;
     }
 }
