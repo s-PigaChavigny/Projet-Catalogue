@@ -26,9 +26,23 @@
                     <img class="image" src="{{ $boutique->image_path }}" alt="{{ $boutique->name }}">
                 @endif
 
-                <a class="back" href="{{ route('boutique.list') }}">← Retour à la liste</a>
+                <div class="meta">
+                    <h2>Catalogues associés</h2>
+                    @if($catalogues->isNotEmpty())
+                        <ul>
+                            @foreach($catalogues as $catalogue)
+                                <li>
+                                    <a href="{{ route('catalogue.show', $catalogue->id) }}">{{ $catalogue->name ?? 'Catalogue #' . $catalogue->id }}</a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    @else
+                        <p>Aucun catalogue associé pour le moment.</p>
+                    @endif
+                </div>
             </div>
         </div>
+        <a class="back" href="{{ route('boutique.list') }}">← Retour à la liste</a>
     </div>
 </body>
 </html>
