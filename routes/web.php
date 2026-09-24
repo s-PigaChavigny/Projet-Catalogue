@@ -179,4 +179,4 @@ Route::get('/admin', function () {
     ]);
 })->middleware(['auth', 'admin'])->name('admin');
 
-Route::get("/search",[SearchFunction::class, "search.show"])->name("saerch.show");
+Route::get("/search",[SearchController::class, "search.show"])->name("search.show");
