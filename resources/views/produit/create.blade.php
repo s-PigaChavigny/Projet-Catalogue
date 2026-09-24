@@ -8,7 +8,7 @@
 <body>
     @include('partials.header')
     <div class="form-shell">
-        <form method="POST" action="{{ route('produit.create') }}">
+        <form method="POST" action="{{ route('produit.create') }}" enctype="multipart/form-data">
             @csrf
             <h1 class="form-title">Créer un produit</h1>
 
@@ -23,8 +23,8 @@
             </div>
 
             <div class="field">
-                <label for="image_path">Image</label>
-                <input id="image_path" type="file" name="image_path" placeholder="Selectionner un fichier">
+                <label for="image">Image</label>
+                <input id="image" type="file" name="image" accept="image/*">
             </div>
             
             <div class="field">

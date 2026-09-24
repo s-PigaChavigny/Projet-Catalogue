@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Evenement;
+use App\Support\UploadedImage;
 
 class EvenementController extends Controller
 {
@@ -30,13 +31,26 @@ class EvenementController extends Controller
 
     public function create(Request $request)
     {
+        $data = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'description' => ['nullable', 'string'],
+            'date' => ['required', 'date'],
+            'lieu' => ['required', 'string', 'max:255'],
+            'image' => ['nullable', 'image', 'max:5120'],
+            'lien_web' => ['nullable', 'url', 'max:255'],
+        ]);
+
+        $imagePath = $request->hasFile('image')
+            ? UploadedImage::store($request->file('image'), 'evenement', $data['name'])
+            : null;
+
         $evenement = Evenement::create([
-            "name" => $request->name,
-            "description" => $request->description,
-            "date" => $request->date,
-            "lieu" => $request->lieu,
-            "image_path" => $request->image_path,
-            "lien_web" => $request->lien_web
+            "name" => $data['name'],
+            "description" => $data['description'] ?? null,
+            "date" => $data['date'],
+            "lieu" => $data['lieu'],
+            "image_path" => $imagePath,
+            "lien_web" => $data['lien_web'] ?? null
         ]);
         return redirect()->route('evenement.list');
     }

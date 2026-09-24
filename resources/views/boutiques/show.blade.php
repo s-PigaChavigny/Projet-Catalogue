@@ -28,7 +28,7 @@
                 </div>
 
                 @if($boutique->image_path)
-                    <img class="image" src="{{ $boutique->image_path }}" alt="{{ $boutique->name }}">
+                    <img class="image" src="{{ asset($boutique->image_path) }}" alt="{{ $boutique->name }}">
                 @endif
 
                 <div class="meta">

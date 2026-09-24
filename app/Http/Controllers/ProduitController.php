@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Produit;
+use App\Support\UploadedImage;
 
 class ProduitController extends Controller
 {
@@ -22,11 +23,22 @@ class ProduitController extends Controller
 
     public function create(Request $request)
     {
+        $data = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'description' => ['nullable', 'string'],
+            'price' => ['required', 'numeric'],
+            'image' => ['nullable', 'image', 'max:5120'],
+        ]);
+
+        $imagePath = $request->hasFile('image')
+            ? UploadedImage::store($request->file('image'), 'produit', $data['name'])
+            : null;
+
         $produit = Produit::create([
-            "name" => $request->name,
-            "description" => $request->description,
-            "price" => $request->price,
-            "image_path" => $request->image_path
+            "name" => $data['name'],
+            "description" => $data['description'] ?? null,
+            "price" => $data['price'],
+            "image_path" => $imagePath
         ]);
         return redirect()->route('produit.list');
     }

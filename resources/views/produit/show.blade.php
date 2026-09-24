@@ -17,7 +17,7 @@
                 <p>{{ $produit->description }}</p>
 
                 @if($produit->image_path)
-                    <img class="image" src="{{ $produit->image_path }}" alt="{{ $produit->name }}">
+                    <img class="image" src="{{ asset($produit->image_path) }}" alt="{{ $produit->name }}">
                 @endif
                 
                 <div class="meta">

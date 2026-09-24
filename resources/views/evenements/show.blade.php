@@ -31,7 +31,7 @@
                 @endif
 
                 @if($evenement->image_path)
-                    <img class="image" src="{{ $evenement->image_path }}" alt="{{ $evenement->name }}">
+                    <img class="image" src="{{ asset($evenement->image_path) }}" alt="{{ $evenement->name }}">
                 @endif
 
                 <div class="meta">

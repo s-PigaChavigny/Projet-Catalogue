@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Boutique;
+use App\Support\UploadedImage;
 
 class BoutiqueController extends Controller
 {
@@ -30,11 +31,22 @@ class BoutiqueController extends Controller
 
     public function create(Request $request)
     {
+        $data = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'description' => ['nullable', 'string'],
+            'contact_info' => ['nullable', 'string', 'max:255'],
+            'image' => ['nullable', 'image', 'max:5120'],
+        ]);
+
+        $imagePath = $request->hasFile('image')
+            ? UploadedImage::store($request->file('image'), 'boutique', $data['name'])
+            : null;
+
         $boutique = Boutique::create([
-            "name" => $request->name,
-            "description" => $request->description,
-            "contact_info" => $request->contact_info,
-            "image_path" => $request->image_path
+            "name" => $data['name'],
+            "description" => $data['description'] ?? null,
+            "contact_info" => $data['contact_info'] ?? null,
+            "image_path" => $imagePath
         ]);
         return redirect()->route('boutique.list');
     }
