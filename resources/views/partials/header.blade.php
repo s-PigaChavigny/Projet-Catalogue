@@ -1,7 +1,7 @@
 <header class="site-header">
     <div class="header-inner">
         <div class="brand-block">
-            <a href="{{ url('/') }}" class="brand"><img src="resources/images/logo_projet_catalogue.png" alt="Logo ArtRef"></a>
+            <a href="{{ url('/') }}" class="brand"><img src="{{ asset('images/logo_projet_catalogue.png') }}" alt="Logo ArtRef"></a>
         </div>
 
         <form action="{{ route('search') }}" method="GET" class="search-form">
