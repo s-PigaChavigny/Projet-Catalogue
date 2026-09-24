@@ -2,6 +2,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Schema;
 
 use App\Models\Boutique;
 use App\Http\Controllers\BoutiqueController;
@@ -27,11 +28,25 @@ use App\Models\User;
 use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
-    return view('acceuil');
+    return view('acceuil', [
+        'evenements' => Schema::hasTable('evenements')
+            ? Evenement::orderByDesc('date')->take(2)->get()
+            : collect(),
+        'boutiques' => Schema::hasTable('boutiques')
+            ? Boutique::take(3)->get()
+            : collect(),
+    ]);
 })->name('home');
 
 Route::get('/accueil', function () {
-    return view('acceuil');
+    return view('acceuil', [
+        'evenements' => Schema::hasTable('evenements')
+            ? Evenement::orderByDesc('date')->take(2)->get()
+            : collect(),
+        'boutiques' => Schema::hasTable('boutiques')
+            ? Boutique::take(3)->get()
+            : collect(),
+    ]);
 })->name('acceuil');
 
 Route::get('/search', function (Request $request) {
