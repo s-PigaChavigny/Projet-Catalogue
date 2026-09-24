@@ -14,15 +14,9 @@
             <h1 class="form-title">Créer un catalogue</h1>
 
             <div class="field">
-                <label for="boutique_id">Boutique</label>
-                <select id="boutique_id" name="boutique_id" required>
-                    <option value="">Choisir une boutique</option>
-                    @foreach(App\Models\Boutique::all() as $boutique)
-                        <option value="{{ $boutique->id }}" {{ $boutiqueId == $boutique->id ? 'selected' : '' }}>
-                            {{ $boutique->name }}
-                        </option>
-                    @endforeach
-                </select>
+                <label>Boutique</label>
+                <p>{{ $boutique?->name ?? 'Boutique non sélectionnée' }}</p>
+                <input type="hidden" name="boutique_id" value="{{ $boutiqueId }}">
             </div>
 
             <div class="field">
