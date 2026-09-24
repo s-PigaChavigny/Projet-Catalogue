@@ -125,8 +125,23 @@ Route::prefix('evenement')->name("evenement.")->group(function () {
     Route::get('/{id}/delete', [EvenementController::class, 'delete'])->name("delete");
 });
 
+Route::prefix('catalogue')->name("catalogue.")->group(function () {
+    Route::get('/create', [CatalogueController::class, 'create_view'])->name("view_create");
+    Route::post('/create', [CatalogueController::class, 'create'])->name("create");
+
+    Route::get('/{id}', [CatalogueController::class, 'show'])->where('id', '[0-9]+')->name("show");
+
+    Route::get('/{id}/edit', [CatalogueController::class, 'edit_view'])->name("edit_view");
+    Route::post('/{id}/edit', [CatalogueController::class, 'edit'])->name("edit");
+
+    Route::post('/{id}/add-product', [CatalogueController::class, 'addProduct'])->name("add_product");
+    Route::post('/{id}/remove-product', [CatalogueController::class, 'removeProduct'])->name("remove_product");
+
+    Route::get('/{id}/delete', [CatalogueController::class, 'delete'])->name("delete");
+});
+
 Route::prefix('produit')->name("produit.")->group(function () {
-    
+
     Route::get('/{id}', [ProduitController::class, 'show'])->where('id', '[0-9]+')->name("show");
 
     Route::get('/create', function () {

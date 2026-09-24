@@ -16,7 +16,9 @@ class BoutiqueController extends Controller
     public function show($id)
     {
         $boutique = Boutique::findOrFail($id);
-        return view('boutiques.show', compact('boutique'));
+        $catalogues = \App\Models\Catalogue::where('boutique_id', $id)->get();
+
+        return view('boutiques.show', compact('boutique', 'catalogues'));
     }
 
     public function delete($id)

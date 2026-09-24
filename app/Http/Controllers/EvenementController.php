@@ -16,7 +16,9 @@ class EvenementController extends Controller
     public function show($id)
     {
         $evenement = Evenement::findOrFail($id);
-        return view('evenements.show', compact('evenement'));
+        $catalogues = \App\Models\Catalogue::where('evenement_id', $id)->get();
+
+        return view('evenements.show', compact('evenement', 'catalogues'));
     }
 
     public function delete($id)
