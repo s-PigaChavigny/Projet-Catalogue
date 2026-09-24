@@ -7,7 +7,7 @@
 </head>
 <body>
     @include('partials.header')
-    
+
     <div class="page">
         <div class="detail-card">
             <div class="hero">
@@ -31,7 +31,7 @@
             </div>
         </div>
 
-        <a class="back" href="{{ route('boutique.list') }}">← Retour aux boutiques</a>
+        <a class="back" href="{{ route('boutique.show', $catalogue->boutique_id) }}">← Retour à la boutique</a>
     </div>
 </body>
 </html>

@@ -16,9 +16,16 @@
             <div class="field">
                 <label>Boutique</label>
                 @if(auth()->check() && auth()->user()->access_level === 'admin')
+                    <select id="boutique_id" name="boutique_id" required>
+                        <option value="">Choisir une boutique</option>
+                        @foreach(App\Models\Boutique::all() as $boutique)
+                            <option value="{{ $boutique->id }}" {{ $boutiqueId == $boutique->id ? 'selected' : '' }}>{{ $boutique->name }}</option>
+                        @endforeach
+                    </select>
                 @else
-                <p>{{ $boutique?->name ?? 'Boutique non sélectionnée' }}</p>
-                <input type="hidden" name="boutique_id" value="{{ $boutiqueId }}">
+                    <p>{{ $boutique?->name ?? 'Boutique non sélectionnée' }}</p>
+                    <input type="hidden" name="boutique_id" value="{{ $boutiqueId }}">
+                @endif
             </div>
 
             <div class="field">

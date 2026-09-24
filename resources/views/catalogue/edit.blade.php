@@ -41,15 +41,15 @@
             </div>
         </form>
 
-        <div style="width: min(1000px, 100%); background: rgba(255,255,255,0.9); border: 2px solid #ffd7a8; border-radius: 28px; box-shadow: 0 18px 45px rgba(255, 134, 134, 0.12); padding: 28px; margin-top: 30px;">
-            <div style="display: grid; gap: 24px; grid-template-columns: 1fr 1fr;">
-                <div style="background: #fffaf4; border: 1px solid #ffe0b3; border-radius: 18px; padding: 18px;">
-                    <h2 style="margin-top: 0;">Produits disponibles</h2>
+        <div>
+            <div >
+                <div>
+                    <h2 >Produits disponibles</h2>
                     @if($availableProduits->isEmpty())
                         <p>Aucun produit disponible pour cette boutique.</p>
                     @else
                         @foreach($availableProduits as $produit)
-                            <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; border:1px solid #ffd7a8; border-radius:12px; padding:10px 12px; margin-bottom:10px; background: white;">
+                            <div>
                                 <span>{{ $produit->name }}</span>
                                 <form method="POST" action="{{ route('catalogue.add_product', $catalogue->id) }}">
                                     @csrf
@@ -61,13 +61,13 @@
                     @endif
                 </div>
 
-                <div style="background: #f6fffb; border: 1px solid #ccebd6; border-radius: 18px; padding: 18px;">
-                    <h2 style="margin-top: 0;">Produits déjà dans le catalogue</h2>
+                <div>
+                    <h2>Produits déjà dans le catalogue</h2>
                     @if($catalogueProduits->isEmpty())
                         <p>Aucun produit associé pour le moment.</p>
                     @else
                         @foreach($catalogueProduits as $produit)
-                            <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; border:1px solid #cfead9; border-radius:12px; padding:10px 12px; margin-bottom:10px; background: white;">
+                            <div>
                                 <span>{{ $produit->name }}</span>
                                 <form method="POST" action="{{ route('catalogue.remove_product', $catalogue->id) }}">
                                     @csrf
