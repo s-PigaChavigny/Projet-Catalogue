@@ -10,8 +10,7 @@
     <div class="container">
         <div class="topbar">
             <div>
-                <div class="badge">À ne pas manquer ✨</div>
-                <h1>Événements joyeux</h1>
+                <h1>Consulte les prochains événements!</h1>
             </div>
             @if(auth()->check() && auth()->user()->access_level === 'admin')
                 <a class="cta" href="{{ route('evenement.view_create') }}">+ Ajouter un événement</a>
@@ -20,8 +19,10 @@
 
         @if($evenements->isEmpty())
             <div class="empty">
-                Aucun événement pour le moment. <br>
-                Crée le premier pour faire vibrer la communauté !
+                Aucun événement pour le moment.<br>
+                @if(auth()->check() && auth()->user()->access_level === 'admin')
+                    <p>Crée le premier événement!</p>
+                @endif
             </div>
         @else
             <div class="grid">

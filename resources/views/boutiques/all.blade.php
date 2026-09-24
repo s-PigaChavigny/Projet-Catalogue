@@ -10,8 +10,7 @@
     <div class="container">
         <div class="topbar">
             <div>
-                <div class="badge">Boutiques du moment ✨</div>
-                <h1>Découvre nos joyeux lieux</h1>
+                <h1>Découvre les artistes!</h1>
             </div>
             @if(auth()->check() && auth()->user()->access_level === 'admin')
                 <a class="cta" href="{{ route('boutique.view_create') }}">+ Ajouter une boutique</a>
@@ -21,7 +20,9 @@
         @if($boutiques->isEmpty())
             <div class="empty">
                 Aucune boutique pour le moment. <br>
-                Crée la première pour lancer la bonne humeur !
+                @if(auth()->check() && auth()->user()->access_level === 'admin')
+                    <p>Crée la première boutique!</p>
+                @endif
             </div>
         @else
             <div class="grid">
