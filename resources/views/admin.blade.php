@@ -20,14 +20,9 @@
                 <div class="badge">Dashboard Admin</div>
                 <!--<h1>Gérez</h1>-->
             </div>
-            <a class="cta" href="{{ route('admin.view_create') }}">+ Ajouter une information</a><!--regarder la redirection, est-ce qu'on doit faire une autre page dédiée à admin ou on reprend les pages classiques pour créer-->
+            
         </div>
 
-        @if($admin->isEmpty())
-            <div class="empty">
-                Aucune donnée pour le moment.
-            </div>
-        @else
             <!--Partie Evenement-->
             <div class="grid">
                 @foreach($evenements as $evenement)
@@ -117,7 +112,6 @@
                     </article>
                 @endforeach
             </div>
-        @endif
     </div>
 </body>
 </html>

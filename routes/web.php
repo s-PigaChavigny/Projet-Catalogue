@@ -160,3 +160,13 @@ Route::prefix('produit')->name("produit.")->group(function () {
 
     Route::get('/{id}/delete', [ProduitController::class, 'delete'])->middleware('admin')->name("delete");
 });
+
+Route::get('/admin', function () {
+    return view('admin', [
+        'evenements' => Evenement::all(),
+        'catalogues' => Catalogue::all(),
+        'boutiques' => Boutique::all(),
+        'produits' => Produit::all(),
+        'users' => User::all(),
+    ]);
+})->middleware(['auth', 'admin'])->name('admin');
