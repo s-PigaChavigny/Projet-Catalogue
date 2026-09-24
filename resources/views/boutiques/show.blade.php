@@ -31,8 +31,13 @@
                     @if($catalogues->isNotEmpty())
                         <ul>
                             @foreach($catalogues as $catalogue)
+                                @php
+                                    $catalogueEvenement = \App\Models\Evenement::find($catalogue->evenement_id);
+                                @endphp
                                 <li>
-                                    <a href="{{ route('catalogue.show', $catalogue->id) }}">{{ $catalogue->name ?? 'Catalogue #' . $catalogue->id }}</a>
+                                    <a href="{{ route('catalogue.show', $catalogue->id) }}">
+                                        {{ $catalogueEvenement?->name ?? 'Catalogue #' . $catalogue->id }}
+                                    </a>
                                 </li>
                             @endforeach
                         </ul>
