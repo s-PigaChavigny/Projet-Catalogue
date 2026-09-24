@@ -161,6 +161,14 @@ Route::prefix('produit')->name("produit.")->group(function () {
     Route::get('/{id}/delete', [ProduitController::class, 'delete'])->middleware('admin')->name("delete");
 });
 
+Route::prefix('user')->name('user.')->middleware('admin')->group(function () {
+    Route::get('/', [UserController::class, 'list'])->name('list');
+    Route::get('/{id}', [UserController::class, 'show'])->name('show');
+    Route::get('/{id}/edit', [UserController::class, 'edit_view'])->name('edit_view');
+    Route::post('/{id}/edit', [UserController::class, 'edit'])->name('edit');
+    Route::get('/{id}/delete', [UserController::class, 'delete'])->name('delete');
+});
+
 Route::get('/admin', function () {
     return view('admin', [
         'evenements' => Evenement::all(),

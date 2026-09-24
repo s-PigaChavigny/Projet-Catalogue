@@ -15,6 +15,8 @@
 
             <div class="field">
                 <label>Boutique</label>
+                @if(auth()->check() && auth()->user()->access_level === 'admin')
+                @else
                 <p>{{ $boutique?->name ?? 'Boutique non sélectionnée' }}</p>
                 <input type="hidden" name="boutique_id" value="{{ $boutiqueId }}">
             </div>

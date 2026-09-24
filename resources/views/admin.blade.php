@@ -1,16 +1,9 @@
-// gestion users
-// gérer profils
-// niveau d'acces
-// gestion produit, artistes, evenements (boutons, create edit delete)
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mes boutiques</title>
-    <link rel="stylesheet" href="{{ asset('css/boutique.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/header.css') }}">
+    <title>Dashboard Admin</title>
 </head>
 <body>
     @include('partials.header')
@@ -25,9 +18,10 @@
 
             <!--Partie Evenement-->
             <div class="grid">
+                <h1>Événements</h1>
+                <a class="link primary" href="{{ route('evenement.create') }}">Ajouter</a>
                 @foreach($evenements as $evenement)
                     <article class="card">
-                        <span class="mini-tag">Evenements</span>
                         <h2>{{ $evenement->name }}</h2>
                         <p>{{ $evenement->description }}</p>
                         <p>{{ $evenement->date }}</p>
@@ -43,27 +37,12 @@
                     </article>
                 @endforeach
             </div>
-            <!--Partie Catalogue-->
+            <!--Partie Boutique-->
             <div class="grid">
-                @foreach($catalogues as $catalogue)
-                    <article class="card">
-                        <span class="mini-tag">Catalogues</span>
-                        <h2>{{ $boutique->name }}</h2>
-                        <p>{{ $evenement->name }}</p>
-
-                        <div class="actions">
-                            <a class="link primary" href="{{ route('catalogue.show', $catalogue->id) }}">Voir</a>
-                            <a class="link secondary" href="{{ route('catalogue.edit_view', $catalogue->id) }}">Modifier</a>
-                            <a class="link danger" href="{{ route('catalogue.delete', $catalogue->id) }}">Supprimer</a>
-                        </div>
-                    </article>
-                @endforeach
-            </div>
-            <!--Partie Boutiques-->
-            <div class="grid">
+                <h1>Boutiques</h1>
+                <a class="link primary" href="{{ route('boutique.create') }}">Ajouter</a>
                 @foreach($boutiques as $boutique)
                     <article class="card">
-                        <span class="mini-tag">Boutiques</span>
                         <h2>{{ $boutique->name }}</h2>
                         <p>{{ $boutique->description }}</p>
                         <p>{{ $boutique->contact_info }}</p>
@@ -77,11 +56,29 @@
                     </article>
                 @endforeach
             </div>
+            <!--Partie Catalogue-->
+            <div class="grid">
+                <h1>Catalogues</h1>
+                <a class="link primary" href="{{ route('catalogue.create') }}">Ajouter</a>
+                @foreach($catalogues as $catalogue)
+                    <article class="card">
+                        <h2>{{ $boutique->name }}</h2>
+                        <p>{{ $evenement->name }}</p>
+
+                        <div class="actions">
+                            <a class="link primary" href="{{ route('catalogue.show', $catalogue->id) }}">Voir</a>
+                            <a class="link secondary" href="{{ route('catalogue.edit_view', $catalogue->id) }}">Modifier</a>
+                            <a class="link danger" href="{{ route('catalogue.delete', $catalogue->id) }}">Supprimer</a>
+                        </div>
+                    </article>
+                @endforeach
+            </div>
             <!--Partie Produits-->
             <div class="grid">
+                <h1>Produits</h1>
+                <a class="link primary" href="{{ route('produit.create') }}">Ajouter</a>
                 @foreach($produits as $produit)
                     <article class="card">
-                        <span class="mini-tag">Produits</span>
                         <h2>{{ $produit->name }}</h2>
                         <p>{{ $produit->description }}</p>
                         <p>{{ $produit->price }}</p>
@@ -97,9 +94,10 @@
             </div>
             <!--Partie Users-->
             <div class="grid">
+                <h1>Utilisateurs</h1>
+                <a class="link primary" href="{{ route('register') }}">Ajouter</a>
                 @foreach($users as $user)
                     <article class="card">
-                        <span class="mini-tag">Utilisateurs</span>
                         <h2>{{ $user->name }}</h2>
                         <p>{{ $user->email }}</p>
                         <p>{{ $user->access_level }}</p>
