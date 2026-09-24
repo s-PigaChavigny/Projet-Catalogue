@@ -49,8 +49,11 @@ Route::get('/accueil', function () {
     ]);
 })->name('acceuil');
 
-Route::get('/search', function (Request $request) {
-    return view('welcome', ['q' => $request->q]);
+
+Route::get('/search', function () {
+    $requests = Produit::query()->get();
+
+    return view('search', compact('requests'));
 })->name('search');
 
 Route::middleware('guest')->group(function () {
