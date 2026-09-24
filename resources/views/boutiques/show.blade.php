@@ -6,6 +6,12 @@
     <title>{{ $boutique->name }}</title>
 </head>
 <body>
+    @php
+        $canManageCatalogues = auth()->check() && (
+            auth()->user()->access_level === 'admin'
+            || (auth()->user()->access_level === 'artist' && (int) auth()->user()->boutique_id === (int) $boutique->id)
+        );
+    @endphp
     <div class="page">
         <div class="detail-card">
             <div class="hero">
@@ -35,6 +41,10 @@
                                     <a href="{{ route('catalogue.show', $catalogue->id) }}">
                                         {{ $catalogueEvenement?->name ?? 'Catalogue #' . $catalogue->id }}
                                     </a>
+                                    @if($canManageCatalogues)
+                                        <a href="{{ route('catalogue.edit_view', $catalogue->id) }}">Modifier</a>
+                                        <a href="{{ route('catalogue.delete', $catalogue->id) }}">Supprimer</a>
+                                    @endif
                                 </li>
                             @endforeach
                         </ul>
@@ -43,7 +53,7 @@
                     @endif
                 </div>
 
-                @if(auth()->check() && auth()->user()->access_level === 'admin')
+                @if($canManageCatalogues)
                     <div class="actions-row">
                         <a href="{{ route('catalogue.view_create', ['boutique_id' => $boutique->id]) }}" class="button primary">Créer un catalogue</a>
                     </div>

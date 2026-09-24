@@ -24,8 +24,9 @@ class CatalogueController extends Controller
     public function delete($id)
     {
         $catalogue = Catalogue::findOrFail($id);
+        $boutiqueId = $catalogue->boutique_id;
         $catalogue->delete();
-        return redirect()->route('catalogue.list'); //a voir avec admin
+        return redirect()->route('boutique.show', $boutiqueId);
     }
 
     public function create_view(Request $request)
