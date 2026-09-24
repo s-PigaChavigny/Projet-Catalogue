@@ -19,6 +19,17 @@
             <a href="{{ route('evenement.list') }}">Événements</a>
             <a href="{{ route('boutique.list') }}">Boutiques</a>
             <a href="{{ route('profile') }}">Mon profil</a>
+            @if(Auth::check() && Auth::user()->access_level === 'admin')
+                <a href="{{ route('admin') }}">Admin</a>
+            @endif
+            @if(Auth::check())
+                <form method="POST" action="{{ route('logout') }}" style="display:inline;">
+                    @csrf
+                    <button type="submit" class="logout-button">Se déconnecter</button>
+                </form>
+            @else
+                <a href="{{ route('login') }}">Se connecter</a>
+            @endif
         </nav>
     </div>
 </header>
