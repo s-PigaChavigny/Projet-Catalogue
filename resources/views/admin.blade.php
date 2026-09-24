@@ -23,11 +23,8 @@
                 @foreach($evenements as $evenement)
                     <article class="card">
                         <h2>{{ $evenement->name }}</h2>
-                        <p>{{ $evenement->description }}</p>
                         <p>{{ $evenement->date }}</p>
                         <p>{{ $evenement->lieu }}</p>
-                        <p>{{ $evenement->image_path }}</p>
-                        <p>{{ $evenement->lien_web }}</p>
 
                         <div class="actions">
                             <a class="link primary" href="{{ route('evenement.show', $evenement->id) }}">Voir</a>
@@ -44,9 +41,7 @@
                 @foreach($boutiques as $boutique)
                     <article class="card">
                         <h2>{{ $boutique->name }}</h2>
-                        <p>{{ $boutique->description }}</p>
                         <p>{{ $boutique->contact_info }}</p>
-                        <p>{{ $boutique->image_path }}</p>
 
                         <div class="actions">
                             <a class="link primary" href="{{ route('boutique.show', $boutique->id) }}">Voir</a>
@@ -80,9 +75,6 @@
                 @foreach($produits as $produit)
                     <article class="card">
                         <h2>{{ $produit->name }}</h2>
-                        <p>{{ $produit->description }}</p>
-                        <p>{{ $produit->price }}</p>
-                        <p>{{ $produit->image_path }}</p>
 
                         <div class="actions">
                             <a class="link primary" href="{{ route('produit.show', $produit->id) }}">Voir</a>
