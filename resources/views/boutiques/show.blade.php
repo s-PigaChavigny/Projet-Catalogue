@@ -40,6 +40,10 @@
                         <p>Aucun catalogue associé pour le moment.</p>
                     @endif
                 </div>
+
+                <div class="actions-row">
+                    <a href="{{ route('catalogue.view_create', ['boutique_id' => $boutique->id]) }}" class="button primary">Créer un catalogue</a>
+                </div>
             </div>
         </div>
         <a class="back" href="{{ route('boutique.list') }}">← Retour à la liste</a>
