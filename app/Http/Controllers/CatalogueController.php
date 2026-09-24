@@ -36,4 +36,20 @@ class CatalogueController extends Controller
         ]);
         return redirect()->route('catalogue.list');
     }
+
+    public function edit_view($id)
+    {
+        $catalogue = Catalogue::findOrFail($id);
+        return view('catalogue.edit', compact('catalogue'));
+    }
+
+    public function edit(Request $request, $id)
+    {
+        $catalogue = Catalogue::findOrFail($id);
+        $catalogue->boutique_id = $request->boutique_id;
+        $catalogue->evenement_id = $request->evenement_id;
+        $catalogue->save();
+
+        return redirect()->route('catalogue.show', $catalogue->id);
+    }
 }
