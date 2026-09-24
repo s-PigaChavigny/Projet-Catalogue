@@ -172,14 +172,14 @@ Route::prefix('produit')->name("produit.")->group(function () {
     Route::get('/{id}', [ProduitController::class, 'show'])->where('id', '[0-9]+')->name("show");
 
     Route::get('/create', function () {
-        return view('produits.create');
-    })->middleware('admin')->name("view_create");
-    Route::post('/create', [ProduitController::class, 'create'])->middleware('admin')->name("create");
+        return app(ProduitController::class)->create_view();
+    })->middleware('product.access')->name("view_create");
+    Route::post('/create', [ProduitController::class, 'create'])->middleware('product.access')->name("create");
 
-    Route::get('/{id}/edit', [ProduitController::class, 'edit_view'])->middleware('admin')->name("edit_view");
-    Route::post('/{id}/edit', [ProduitController::class, 'edit'])->middleware('admin')->name("edit");
+    Route::get('/{id}/edit', [ProduitController::class, 'edit_view'])->middleware('product.access')->name("edit_view");
+    Route::post('/{id}/edit', [ProduitController::class, 'edit'])->middleware('product.access')->name("edit");
 
-    Route::get('/{id}/delete', [ProduitController::class, 'delete'])->middleware('admin')->name("delete");
+    Route::get('/{id}/delete', [ProduitController::class, 'delete'])->middleware('product.access')->name("delete");
 });
 
 Route::prefix('user')->name('user.')->middleware('admin')->group(function () {

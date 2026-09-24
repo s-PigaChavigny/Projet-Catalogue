@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class produit extends Model
 {
+    public function boutique()
+    {
+        return $this->belongsTo(boutique::class);
+    }
+
     protected $fillable = [
         'name',
         'description',

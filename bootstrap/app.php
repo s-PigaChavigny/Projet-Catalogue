@@ -15,6 +15,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'admin' => \App\Http\Middleware\AdminMiddleware::class,
             'catalogue.access' => \App\Http\Middleware\CatalogueAccessMiddleware::class,
+            'product.access' => \App\Http\Middleware\ProductAccessMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

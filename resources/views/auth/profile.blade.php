@@ -24,6 +24,7 @@
                 <a href="{{ route('boutique.show', $boutique->id) }}" class="button secondary">Ma boutique</a>
                 <a href="{{ route('boutique.produits', $boutique->id) }}" class="button secondary">Mes produits</a>
                 <a href="{{ route('catalogue.view_create', ['boutique_id' => $boutique->id]) }}" class="button primary">Créer un catalogue</a>
+                <a href="{{ route('produit.view_create', ['boutique_id' => $boutique->id]) }}" class="button primary">Ajouter un produit</a>
             @endif
             <form method="POST" action="{{ route('logout') }}">
                 @csrf

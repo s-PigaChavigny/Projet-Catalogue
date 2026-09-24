@@ -24,7 +24,7 @@
             </ul>
         @endif
 
-        <a href="{{ route('boutique.show', $boutique->id) }}">Retour à la boutique</a>
+        <a href="{{ route('profile') }}">Retour au profil</a>
     </main>
 </body>
 </html>

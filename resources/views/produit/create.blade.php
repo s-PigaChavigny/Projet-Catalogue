@@ -14,12 +14,27 @@
 
             <div class="field">
                 <label for="name">Nom</label>
-                <input id="name" type="text" name="name" placeholder="Ex : Festival des saveurs" required>
+                <input id="name" type="text" name="name" placeholder="Ex : Porte-clefs" required>
             </div>
 
             <div class="field">
                 <label for="description">Description</label>
-                <textarea id="description" name="description" placeholder="Décris ton événement..."></textarea>
+                <textarea id="description" name="description" placeholder="Décris ton produit..."></textarea>
+            </div>
+
+            <div class="field">
+                <label for="boutique_id">Boutique</label>
+                @if(auth()->user()->access_level === 'artist')
+                    <p>{{ $boutiques->first()?->name ?? 'Aucune boutique associée' }}</p>
+                    <input type="hidden" name="boutique_id" value="{{ $boutiques->first()?->id }}">
+                @else
+                    <select id="boutique_id" name="boutique_id" required>
+                        <option value="">Choisir une boutique</option>
+                        @foreach($boutiques as $boutique)
+                            <option value="{{ $boutique->id }}">{{ $boutique->name }}</option>
+                        @endforeach
+                    </select>
+                @endif
             </div>
 
             <div class="field">
@@ -34,7 +49,7 @@
 
             <div class="actions-row">
                 <button type="submit" class="button primary">Enregistrer</button>
-                <a class="back" href="{{ route('catalogue.list') }}">Retour au catalogue</a>
+                <a class="back" href="{{ route('boutique.list') }}">Retour aux boutiques</a>
             </div>
         </form>
     </div>

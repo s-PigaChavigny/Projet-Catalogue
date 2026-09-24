@@ -8,7 +8,7 @@
 <body>
     @include('partials.header')
     <div class="form-shell">
-        <form method="POST" action="{{ route('produit.edit', $produit->id) }}">
+        <form method="POST" action="{{ route('produit.edit', $produit->id) }}" enctype="multipart/form-data">
             @csrf
             <h1 class="form-title">Modifier le produit</h1>
 
@@ -23,8 +23,22 @@
             </div>
 
             <div class="field">
-                <label for="image_path">Image</label>
-                <input id="image_path" type="file" name="image_path" value="{{ $produit->image_path }}">
+                <label for="boutique_id">Boutique</label>
+                @if(auth()->user()->access_level === 'artist')
+                    <p>{{ $produit->boutique?->name ?? 'Boutique associée' }}</p>
+                    <input type="hidden" name="boutique_id" value="{{ $produit->boutique_id }}">
+                @else
+                    <select id="boutique_id" name="boutique_id" required>
+                        @foreach($boutiques as $boutique)
+                            <option value="{{ $boutique->id }}" @selected($produit->boutique_id == $boutique->id)>{{ $boutique->name }}</option>
+                        @endforeach
+                    </select>
+                @endif
+            </div>
+
+            <div class="field">
+                <label for="image">Image</label>
+                <input id="image" type="file" name="image" accept="image/*">
             </div>
 
             <div class="field">
@@ -34,7 +48,7 @@
 
             <div class="actions-row">
                 <button type="submit" class="button success">Mettre à jour</button>
-                <a class="back" href="{{ route('catalogue.list') }}">Retour au catalogue</a>
+                <a class="back" href="{{ route('boutique.show', $produit->boutique_id) }}">Retour à la boutique</a>
             </div>
         </form>
     </div>

@@ -24,7 +24,7 @@
                     Prix : {{ $produit->price }}
                 </div>
 
-                <a class="back" href="{{ route('catalogue.list') }}">← Retour au catalogue</a>
+                <a class="back" href="{{ route('boutique.show', $produit->boutique_id) }}">← Retour à la boutique</a>
             </div>
         </div>
     </div>

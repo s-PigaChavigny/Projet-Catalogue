@@ -58,6 +58,7 @@
                 @if($canManageCatalogues)
                     <div class="actions-row">
                         <a href="{{ route('catalogue.view_create', ['boutique_id' => $boutique->id]) }}" class="button primary">Créer un catalogue</a>
+                        <a href="{{ route('produit.view_create', ['boutique_id' => $boutique->id]) }}" class="button primary">Ajouter un produit</a>
                     </div>
                 @endif
             </div>
