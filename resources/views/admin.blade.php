@@ -35,6 +35,10 @@
                         <span class="mini-tag">Evenements</span>
                         <h2>{{ $evenement->name }}</h2>
                         <p>{{ $evenement->description }}</p>
+                        <p>{{ $evenement->date }}</p>
+                        <p>{{ $evenement->lieu }}</p>
+                        <p>{{ $evenement->image_path }}</p>
+                        <p>{{ $evenement->lien_web }}</p>
 
                         <div class="actions">
                             <a class="link primary" href="{{ route('evenement.show', $evenement->id) }}">Voir</a>
@@ -49,8 +53,8 @@
                 @foreach($catalogues as $catalogue)
                     <article class="card">
                         <span class="mini-tag">Catalogues</span>
-                        <h2>{{ $catalogue->name }}</h2>
-                        <p>{{ $catalogue->description }}</p>
+                        <h2>{{ $boutique->name }}</h2>
+                        <p>{{ $evenement->name }}</p>
 
                         <div class="actions">
                             <a class="link primary" href="{{ route('catalogue.show', $catalogue->id) }}">Voir</a>
@@ -67,6 +71,8 @@
                         <span class="mini-tag">Boutiques</span>
                         <h2>{{ $boutique->name }}</h2>
                         <p>{{ $boutique->description }}</p>
+                        <p>{{ $boutique->contact_info }}</p>
+                        <p>{{ $boutique->image_path }}</p>
 
                         <div class="actions">
                             <a class="link primary" href="{{ route('boutique.show', $boutique->id) }}">Voir</a>
@@ -83,6 +89,8 @@
                         <span class="mini-tag">Produits</span>
                         <h2>{{ $produit->name }}</h2>
                         <p>{{ $produit->description }}</p>
+                        <p>{{ $produit->price }}</p>
+                        <p>{{ $produit->image_path }}</p>
 
                         <div class="actions">
                             <a class="link primary" href="{{ route('produit.show', $produit->id) }}">Voir</a>
@@ -98,7 +106,8 @@
                     <article class="card">
                         <span class="mini-tag">Utilisateurs</span>
                         <h2>{{ $user->name }}</h2>
-                        <p>{{ $user->description }}</p>
+                        <p>{{ $user->email }}</p>
+                        <p>{{ $user->access_level }}</p>
 
                         <div class="actions">
                             <a class="link primary" href="{{ route('user.show', $user->id) }}">Voir</a>
