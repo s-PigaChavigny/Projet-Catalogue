@@ -178,3 +178,5 @@ Route::get('/admin', function () {
         'users' => User::all(),
     ]);
 })->middleware(['auth', 'admin'])->name('admin');
+
+Route::get("/search",[SearchController::class, "search.show"])->name("search.show");
