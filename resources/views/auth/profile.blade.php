@@ -7,7 +7,7 @@
 </head>
 <body>
     @include('partials.header')
-    
+
     <div class="profile-card">
         <h1>Mon profil</h1>
 
@@ -16,13 +16,13 @@
             <div>
                 <p class="profile-name">{{ $user->name }}</p>
                 <p class="profile-email">{{ $user->email }}</p>
-                <p class="profile-role">Rôle : {{ $user->access_level ?? 'user' }}</p>
             </div>
         </div>
 
         <div class="actions-row profile-actions">
             @if($user->access_level === 'artist' && $boutique)
                 <a href="{{ route('boutique.show', $boutique->id) }}" class="button secondary">Ma boutique</a>
+                <a href="{{ route('boutique.produits', $boutique->id) }}" class="button secondary">Mes produits</a>
                 <a href="{{ route('catalogue.view_create', ['boutique_id' => $boutique->id]) }}" class="button primary">Créer un catalogue</a>
             @endif
             <form method="POST" action="{{ route('logout') }}">

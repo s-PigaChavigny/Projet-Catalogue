@@ -95,7 +95,7 @@
             <!--Partie Users-->
             <div class="grid">
                 <h1>Utilisateurs</h1>
-                <a class="link primary" href="{{ route('register') }}">Ajouter</a>
+                <a class="link primary" href="{{ route('user.create') }}">Ajouter</a>
                 @foreach($users as $user)
                     <article class="card">
                         <h2>{{ $user->name }}</h2>

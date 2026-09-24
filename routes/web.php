@@ -115,6 +115,9 @@ Route::middleware('auth')->group(function () {
 Route::prefix('boutique')->name("boutique.")->group(function () {
     // Afficher boutiques
     Route::get('/', [BoutiqueController::class, 'list'])->name("list");
+    Route::get("/{id}/produits", [ProduitController::class, 'listByBoutique'])
+        ->where('id', '[0-9]+')
+        ->name("produits");
     Route::get("/{id}", [BoutiqueController::class, 'show'])->where('id', '[0-9]+')->name("show");
 
     // Créer une boutique
@@ -178,6 +181,8 @@ Route::prefix('produit')->name("produit.")->group(function () {
 
 Route::prefix('user')->name('user.')->middleware('admin')->group(function () {
     Route::get('/', [UserController::class, 'list'])->name('list');
+    Route::get('/create', [UserController::class, 'create_view'])->name('create');
+    Route::post('/create', [UserController::class, 'create'])->name('store');
     Route::get('/{id}', [UserController::class, 'show'])->name('show');
     Route::get('/{id}/edit', [UserController::class, 'edit_view'])->name('edit_view');
     Route::post('/{id}/edit', [UserController::class, 'edit'])->name('edit');

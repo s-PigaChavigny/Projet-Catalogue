@@ -17,6 +17,11 @@ class User extends Authenticatable
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
 
+    public function boutique()
+    {
+        return $this->belongsTo(\App\Models\boutique::class);
+    }
+
     /**
      * Get the attributes that should be cast.
      *

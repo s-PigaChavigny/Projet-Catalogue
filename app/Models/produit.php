@@ -10,6 +10,7 @@ class produit extends Model
         'name',
         'description',
         'price',
+        'boutique_id',
         'image_path'
     ];
 }

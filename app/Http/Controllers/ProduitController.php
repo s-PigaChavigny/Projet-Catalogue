@@ -4,10 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Produit;
+use App\Models\Boutique;
 use App\Support\UploadedImage;
 
 class ProduitController extends Controller
 {
+    public function listByBoutique($boutiqueId)
+    {
+        $boutique = Boutique::findOrFail($boutiqueId);
+        $produits = Produit::where('boutique_id', $boutique->id)->get();
+
+        return view('produit.all', compact('boutique', 'produits'));
+    }
+
     public function show($id)
     {
         $produit = Produit::findOrFail($id);
