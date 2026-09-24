@@ -99,7 +99,7 @@ Route::middleware('auth')->group(function () {
         $user = Auth::user();
         $boutique = $user->boutique_id ? Boutique::find($user->boutique_id) : null;
         $catalogues = $boutique
-            ? Catalogue::where('boutique_id', $boutique->id)->get()
+            ? Catalogue::where('boutique_id', $boutique->id)->with('evenement')->get()
             : collect();
 
         return view('auth.profile', compact('user', 'boutique', 'catalogues'));
