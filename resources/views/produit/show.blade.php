@@ -18,25 +18,15 @@
             <div class="content">
                 <p>{{ $produit->description }}</p>
 
+                @if($produit->image_path)
+                    <img class="image" src="{{ $produit->image_path }}" alt="{{ $produit->name }}">
+                @endif
+                
                 <div class="meta">
-                    📅 Date : {{ $produit->date }}
+                    Prix : {{ $produit->price }}
                 </div>
 
-                <div class="meta">
-                    📍 Lieu : {{ $produit->lieu }}
-                </div>
-
-                @if($evenement->lien_web)
-                    <div class="meta">
-                        🔗 Site : <a href="{{ $produit->lien_web }}" target="_blank" rel="noopener noreferrer">{{ $evenement->lien_web }}</a>
-                    </div>
-                @endif
-
-                @if($evenement->image_path)
-                    <img class="image" src="{{ $evenement->image_path }}" alt="{{ $evenement->name }}">
-                @endif
-
-                <a class="back" href="{{ route('evenement.list') }}">← Retour à la liste</a>
+                <a class="back" href="{{ route('catalogue.list') }}">← Retour au catalogue</a>
             </div>
         </div>
     </div>

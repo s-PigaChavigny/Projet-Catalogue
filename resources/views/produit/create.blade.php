@@ -36,7 +36,7 @@
 
             <div class="actions-row">
                 <button type="submit" class="button primary">Enregistrer</button>
-                <a class="back" href="{{ route('catalogue.list') }}">Retour</a>
+                <a class="back" href="{{ route('catalogue.list') }}">Retour au catalogue</a>
             </div>
         </form>
     </div>
