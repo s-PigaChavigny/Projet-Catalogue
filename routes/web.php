@@ -124,3 +124,18 @@ Route::prefix('evenement')->name("evenement.")->group(function () {
 
     Route::get('/{id}/delete', [EvenementController::class, 'delete'])->name("delete");
 });
+
+Route::prefix('produit')->name("produit.")->group(function () {
+    
+    Route::get('/{id}', [ProduitController::class, 'show'])->where('id', '[0-9]+')->name("show");
+
+    Route::get('/create', function () {
+        return view('produits.create');
+    })->name("view_create");
+    Route::post('/create', [ProduitController::class, 'create'])->name("create");
+
+    Route::get('/{id}/edit', [ProduitController::class, 'edit_view'])->name("edit_view");
+    Route::post('/{id}/edit', [ProduitController::class, 'edit'])->name("edit");
+
+    Route::get('/{id}/delete', [ProduitController::class, 'delete'])->name("delete");
+});

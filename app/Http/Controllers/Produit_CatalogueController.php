@@ -7,11 +7,11 @@ use App\Models\Produit_Catalogue;
 
 class Produit_CatalogueController extends Controller
 {
-
-    public function list($id)
+    public function list($catalogue_id)
     {
-        $produit_catalogue = Produit_Catalogue::findOrFail($catalogue_id); //id du catalogue
-        return view('produit_catalogues.show', compact('produit_catalogue'));
+        return Produit_Catalogue::where('catalogue_id', $catalogue_id)
+            ->distinct()
+            ->pluck('produit_id');
     }
 
     public function delete($id)
