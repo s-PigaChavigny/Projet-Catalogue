@@ -6,6 +6,7 @@
     <title>{{ $evenement->name }}</title>
 </head>
 <body>
+    @include('partials.header')
     <div class="page">
         <div class="detail-card">
             <div class="hero">

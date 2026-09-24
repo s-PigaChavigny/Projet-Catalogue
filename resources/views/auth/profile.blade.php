@@ -6,7 +6,8 @@
     <title>Mon profil</title>
 </head>
 <body>
-
+    @include('partials.header')
+    
     <div class="profile-card">
         <h1>Mon profil</h1>
 

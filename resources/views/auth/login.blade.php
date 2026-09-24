@@ -6,7 +6,7 @@
     <title>Connexion</title>
 </head>
 <body>
-
+    @include('partials.header')
     <div class="form-shell">
         <form method="POST" action="{{ route('login') }}">
             @csrf

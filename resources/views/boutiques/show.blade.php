@@ -6,6 +6,8 @@
     <title>{{ $boutique->name }}</title>
 </head>
 <body>
+    @include('partials.header')
+    
     @php
         $canManageCatalogues = auth()->check() && (
             auth()->user()->access_level === 'admin'
