@@ -11,7 +11,7 @@
         <h1>Mon profil</h1>
 
         <div class="profile-info">
-            <div class="profile-avatar">{{ strtoupper(substr($user->name, 0, 1)) }}</div>
+            <!-- <div class="profile-avatar">{{ strtoupper(substr($user->name, 0, 1)) }}</div> -->
             <div>
                 <p class="profile-name">{{ $user->name }}</p>
                 <p class="profile-email">{{ $user->email }}</p>
@@ -20,7 +20,6 @@
         </div>
 
         <div class="actions-row profile-actions">
-            <a href="{{ route('search') }}" class="button secondary">Rechercher</a>
             @if($user->access_level === 'artist' && $boutique)
                 <a href="{{ route('boutique.show', $boutique->id) }}" class="button secondary">Ma boutique</a>
                 <a href="{{ route('catalogue.view_create', ['boutique_id' => $boutique->id]) }}" class="button primary">Créer un catalogue</a>
