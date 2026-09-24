@@ -7,12 +7,6 @@ use App\Models\Produit;
 
 class ProduitController extends Controller
 {
-    public function list()
-    {
-        $produits = Produit::findOrFail($boutique_id);
-        return view('produits.all', compact('produits'));
-    }
-
     public function show($id)
     {
         $produit = Produit::findOrFail($id);

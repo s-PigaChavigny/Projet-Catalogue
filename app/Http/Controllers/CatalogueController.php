@@ -7,16 +7,16 @@ use App\Models\Catalogue;
 
 class CatalogueController extends Controller
 {
-    public function list()
-    {
-        $catalogues = Catalogue::all();
-        return view('catalogues.all', compact('catalogues'));
-    }
-
     public function show($id)
     {
-        $catalogue = Catalogue::findOrFail($id);
-        return view('catalogues.show', compact('catalogue'));
+    $catalogue = Catalogue::findOrFail($id);
+
+    $produitIds = Produit_Catalogue::where('catalogue_id', $catalogue->id)
+        ->pluck('produit_id');
+
+    $produits = Produit::whereIn('id', $produitIds)->get();
+
+    return view('catalogues.show', compact('catalogue', 'produits'));
     }
 
     public function delete($id)
