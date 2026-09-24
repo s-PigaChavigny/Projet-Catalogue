@@ -13,7 +13,9 @@
                 <div class="badge">À ne pas manquer ✨</div>
                 <h1>Événements joyeux</h1>
             </div>
-            <a class="cta" href="{{ route('evenement.view_create') }}">+ Ajouter un événement</a>
+            @if(auth()->check() && auth()->user()->access_level === 'admin')
+                <a class="cta" href="{{ route('evenement.view_create') }}">+ Ajouter un événement</a>
+            @endif
         </div>
 
         @if($evenements->isEmpty())
@@ -33,8 +35,10 @@
 
                         <div class="actions">
                             <a class="link primary" href="{{ route('evenement.show', $evenement->id) }}">Voir</a>
-                            <a class="link secondary" href="{{ route('evenement.edit_view', $evenement->id) }}">Modifier</a>
-                            <a class="link danger" href="{{ route('evenement.delete', $evenement->id) }}">Supprimer</a>
+                            @if(auth()->check() && auth()->user()->access_level === 'admin')
+                                <a class="link secondary" href="{{ route('evenement.edit_view', $evenement->id) }}">Modifier</a>
+                                <a class="link danger" href="{{ route('evenement.delete', $evenement->id) }}">Supprimer</a>
+                            @endif
                         </div>
                     </article>
                 @endforeach

@@ -99,15 +99,15 @@ Route::prefix('boutique')->name("boutique.")->group(function () {
     // Créer une boutique
     Route::get('/create', function () {
         return view('boutiques.create');
-    })->name("view_create");
-    Route::post('/create', [BoutiqueController::class, 'create'])->name("create");
+    })->middleware('admin')->name("view_create");
+    Route::post('/create', [BoutiqueController::class, 'create'])->middleware('admin')->name("create");
 
     // Modifier une boutique
-    Route::get("/{id}/edit", [BoutiqueController::class, 'edit_view'])->name("edit_view");
-    Route::post("/{id}/edit", [BoutiqueController::class, 'edit'])->name("edit");
+    Route::get("/{id}/edit", [BoutiqueController::class, 'edit_view'])->middleware('admin')->name("edit_view");
+    Route::post("/{id}/edit", [BoutiqueController::class, 'edit'])->middleware('admin')->name("edit");
 
     // Supprimer une boutique
-    Route::get("/{id}/delete", [BoutiqueController::class, 'delete'])->name("delete");
+    Route::get("/{id}/delete", [BoutiqueController::class, 'delete'])->middleware('admin')->name("delete");
 });
 
 Route::prefix('evenement')->name("evenement.")->group(function () {
@@ -116,28 +116,28 @@ Route::prefix('evenement')->name("evenement.")->group(function () {
 
     Route::get('/create', function () {
         return view('evenements.create');
-    })->name("view_create");
-    Route::post('/create', [EvenementController::class, 'create'])->name("create");
+    })->middleware('admin')->name("view_create");
+    Route::post('/create', [EvenementController::class, 'create'])->middleware('admin')->name("create");
 
-    Route::get('/{id}/edit', [EvenementController::class, 'edit_view'])->name("edit_view");
-    Route::post('/{id}/edit', [EvenementController::class, 'edit'])->name("edit");
+    Route::get('/{id}/edit', [EvenementController::class, 'edit_view'])->middleware('admin')->name("edit_view");
+    Route::post('/{id}/edit', [EvenementController::class, 'edit'])->middleware('admin')->name("edit");
 
-    Route::get('/{id}/delete', [EvenementController::class, 'delete'])->name("delete");
+    Route::get('/{id}/delete', [EvenementController::class, 'delete'])->middleware('admin')->name("delete");
 });
 
 Route::prefix('catalogue')->name("catalogue.")->group(function () {
-    Route::get('/create', [CatalogueController::class, 'create_view'])->name("view_create");
-    Route::post('/create', [CatalogueController::class, 'create'])->name("create");
+    Route::get('/create', [CatalogueController::class, 'create_view'])->middleware('admin')->name("view_create");
+    Route::post('/create', [CatalogueController::class, 'create'])->middleware('admin')->name("create");
 
     Route::get('/{id}', [CatalogueController::class, 'show'])->where('id', '[0-9]+')->name("show");
 
-    Route::get('/{id}/edit', [CatalogueController::class, 'edit_view'])->name("edit_view");
-    Route::post('/{id}/edit', [CatalogueController::class, 'edit'])->name("edit");
+    Route::get('/{id}/edit', [CatalogueController::class, 'edit_view'])->middleware('admin')->name("edit_view");
+    Route::post('/{id}/edit', [CatalogueController::class, 'edit'])->middleware('admin')->name("edit");
 
-    Route::post('/{id}/add-product', [CatalogueController::class, 'addProduct'])->name("add_product");
-    Route::post('/{id}/remove-product', [CatalogueController::class, 'removeProduct'])->name("remove_product");
+    Route::post('/{id}/add-product', [CatalogueController::class, 'addProduct'])->middleware('admin')->name("add_product");
+    Route::post('/{id}/remove-product', [CatalogueController::class, 'removeProduct'])->middleware('admin')->name("remove_product");
 
-    Route::get('/{id}/delete', [CatalogueController::class, 'delete'])->name("delete");
+    Route::get('/{id}/delete', [CatalogueController::class, 'delete'])->middleware('admin')->name("delete");
 });
 
 Route::prefix('produit')->name("produit.")->group(function () {
@@ -146,11 +146,11 @@ Route::prefix('produit')->name("produit.")->group(function () {
 
     Route::get('/create', function () {
         return view('produits.create');
-    })->name("view_create");
-    Route::post('/create', [ProduitController::class, 'create'])->name("create");
+    })->middleware('admin')->name("view_create");
+    Route::post('/create', [ProduitController::class, 'create'])->middleware('admin')->name("create");
 
-    Route::get('/{id}/edit', [ProduitController::class, 'edit_view'])->name("edit_view");
-    Route::post('/{id}/edit', [ProduitController::class, 'edit'])->name("edit");
+    Route::get('/{id}/edit', [ProduitController::class, 'edit_view'])->middleware('admin')->name("edit_view");
+    Route::post('/{id}/edit', [ProduitController::class, 'edit'])->middleware('admin')->name("edit");
 
-    Route::get('/{id}/delete', [ProduitController::class, 'delete'])->name("delete");
+    Route::get('/{id}/delete', [ProduitController::class, 'delete'])->middleware('admin')->name("delete");
 });

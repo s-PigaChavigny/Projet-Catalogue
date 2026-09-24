@@ -43,9 +43,11 @@
                     @endif
                 </div>
 
-                <div class="actions-row">
-                    <a href="{{ route('catalogue.view_create', ['boutique_id' => $boutique->id]) }}" class="button primary">Créer un catalogue</a>
-                </div>
+                @if(auth()->check() && auth()->user()->access_level === 'admin')
+                    <div class="actions-row">
+                        <a href="{{ route('catalogue.view_create', ['boutique_id' => $boutique->id]) }}" class="button primary">Créer un catalogue</a>
+                    </div>
+                @endif
             </div>
         </div>
         <a class="back" href="{{ route('boutique.list') }}">← Retour à la liste</a>

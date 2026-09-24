@@ -13,7 +13,9 @@
                 <div class="badge">Boutiques du moment ✨</div>
                 <h1>Découvre nos joyeux lieux</h1>
             </div>
-            <a class="cta" href="{{ route('boutique.view_create') }}">+ Ajouter une boutique</a>
+            @if(auth()->check() && auth()->user()->access_level === 'admin')
+                <a class="cta" href="{{ route('boutique.view_create') }}">+ Ajouter une boutique</a>
+            @endif
         </div>
 
         @if($boutiques->isEmpty())
@@ -31,8 +33,10 @@
 
                         <div class="actions">
                             <a class="link primary" href="{{ route('boutique.show', $boutique->id) }}">Voir</a>
-                            <a class="link secondary" href="{{ route('boutique.edit_view', $boutique->id) }}">Modifier</a>
-                            <a class="link danger" href="{{ route('boutique.delete', $boutique->id) }}">Supprimer</a>
+                            @if(auth()->check() && auth()->user()->access_level === 'admin')
+                                <a class="link secondary" href="{{ route('boutique.edit_view', $boutique->id) }}">Modifier</a>
+                                <a class="link danger" href="{{ route('boutique.delete', $boutique->id) }}">Supprimer</a>
+                            @endif
                         </div>
                     </article>
                 @endforeach
