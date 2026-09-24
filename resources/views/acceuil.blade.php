@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Catalogue — Accueil</title>
+	<title>ArtRef — Accueil</title>
 </head>
 <body>
 
@@ -14,14 +14,14 @@
 
 	<main>
 		<section class="mx-auto max-w-7xl px-6 py-24 lg:py-32">
-			<p class="mb-5 text-sm font-bold uppercase tracking-[.3em] text-fuchsia-400">AAAA</p>
-			<h1 class="max-w-3xl text-5xl font-black leading-tight md:text-7xl">Bienvenue dans notre catalogue!</h1>
-			<p class="mt-7 max-w-2xl text-lg leading-8 text-slate-400">Le site de référence pour tous les artistes participant à des conventions!</p>
+			<!--<p class="mb-5 text-sm font-bold uppercase tracking-[.3em] text-fuchsia-400">AAAA</p>-->
+			<h1 class="max-w-3xl text-5xl font-black leading-tight md:text-7xl">Bienvenue dans le catalogue ArtRef!</h1>
+			<p class="mt-7 max-w-2xl text-lg leading-8 text-slate-400">Le site de référence pour tous les artistes de conventions!</p>
 		</section>
 
 		<section class="mx-auto max-w-7xl px-6 pb-20">
 			<div class="mb-8 flex items-end justify-between">
-				<div><p class="text-sm uppercase tracking-widest text-fuchsia-400">À l'affiche</p><h2 class="mt-2 text-3xl font-bold">Conventions récentes</h2></div>
+				<div><p class="text-sm uppercase tracking-widest text-fuchsia-400">Consultez toutes vos conventions préférées</p><h2 class="mt-2 text-3xl font-bold">Conventions récentes</h2></div>
 				<a href="{{ url('/evenement') }}" class="text-sm text-slate-400 hover:text-white">Voir tout →</a>
 			</div>
 			<div class="grid gap-6 md:grid-cols-2">
