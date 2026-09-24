@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $catalogue->name }}</title>
-    <link rel="stylesheet" href="{{ asset('css/boutique.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/header.css') }}">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
-    @include('partials.header')
 
     <div class="page">
         <div class="detail-card">
