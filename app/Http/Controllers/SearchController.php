@@ -6,18 +6,18 @@ use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
-    public function search(){ //recherche dans les evenements
+    public function search(){ //recherche dans les produit
         $request = Evenement::query()->whereHas('search', function ($request) use ($search) {
         $search_escaped = str_replace('%', '\%', $search);
         $request->where('q', 'LIKE', '%' . $search_escaped . '%');
         });
     }
 
-    /*public function searchBoutique(){
-        $queryBoutique = Boutique::query()->whereHas('search', function ($queryBoutique) use ($search) {
+    public function searchBoutique(){
+        $request = Boutique::query()->whereHas('search', function ($request) use ($search) {
         $search_escaped = str_replace('%', '\%', $search);
-        $queryBoutique->where('name', 'LIKE', '%' . $search_escaped . '%')->orWhere('description', 'LIKE', '%' . $search_escaped . '%');
+        $request->where('q', 'LIKE', '%' . $search_escaped . '%');
         });
-    }*/
+    }
 
 }

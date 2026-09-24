@@ -51,8 +51,8 @@ Route::get('/accueil', function () {
 
 
 Route::get('/search', function () {
-    $requests = Produit::query()->get();
-
+    $requests = Evenement::query()->get();
+    $requests = Boutique::query()->get();
     return view('search', compact('requests'));
 })->name('search');
 
