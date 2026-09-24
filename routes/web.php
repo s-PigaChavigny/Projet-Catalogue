@@ -78,7 +78,13 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', function () {
-        return view('auth.profile', ['user' => Auth::user()]);
+        $user = Auth::user();
+        $boutique = $user->boutique_id ? Boutique::find($user->boutique_id) : null;
+        $catalogues = $boutique
+            ? Catalogue::where('boutique_id', $boutique->id)->get()
+            : collect();
+
+        return view('auth.profile', compact('user', 'boutique', 'catalogues'));
     })->name('profile');
 
     Route::post('/logout', function (Request $request) {
@@ -126,18 +132,18 @@ Route::prefix('evenement')->name("evenement.")->group(function () {
 });
 
 Route::prefix('catalogue')->name("catalogue.")->group(function () {
-    Route::get('/create', [CatalogueController::class, 'create_view'])->middleware('admin')->name("view_create");
-    Route::post('/create', [CatalogueController::class, 'create'])->middleware('admin')->name("create");
+    Route::get('/create', [CatalogueController::class, 'create_view'])->middleware('catalogue.access')->name("view_create");
+    Route::post('/create', [CatalogueController::class, 'create'])->middleware('catalogue.access')->name("create");
 
     Route::get('/{id}', [CatalogueController::class, 'show'])->where('id', '[0-9]+')->name("show");
 
-    Route::get('/{id}/edit', [CatalogueController::class, 'edit_view'])->middleware('admin')->name("edit_view");
-    Route::post('/{id}/edit', [CatalogueController::class, 'edit'])->middleware('admin')->name("edit");
+    Route::get('/{id}/edit', [CatalogueController::class, 'edit_view'])->middleware('catalogue.access')->name("edit_view");
+    Route::post('/{id}/edit', [CatalogueController::class, 'edit'])->middleware('catalogue.access')->name("edit");
 
-    Route::post('/{id}/add-product', [CatalogueController::class, 'addProduct'])->middleware('admin')->name("add_product");
-    Route::post('/{id}/remove-product', [CatalogueController::class, 'removeProduct'])->middleware('admin')->name("remove_product");
+    Route::post('/{id}/add-product', [CatalogueController::class, 'addProduct'])->middleware('catalogue.access')->name("add_product");
+    Route::post('/{id}/remove-product', [CatalogueController::class, 'removeProduct'])->middleware('catalogue.access')->name("remove_product");
 
-    Route::get('/{id}/delete', [CatalogueController::class, 'delete'])->middleware('admin')->name("delete");
+    Route::get('/{id}/delete', [CatalogueController::class, 'delete'])->middleware('catalogue.access')->name("delete");
 });
 
 Route::prefix('produit')->name("produit.")->group(function () {

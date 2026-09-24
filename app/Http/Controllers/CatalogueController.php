@@ -24,13 +24,17 @@ class CatalogueController extends Controller
     public function delete($id)
     {
         $catalogue = Catalogue::findOrFail($id);
+        $boutiqueId = $catalogue->boutique_id;
         $catalogue->delete();
-        return redirect()->route('catalogue.list'); //a voir avec admin
+        return redirect()->route('boutique.show', $boutiqueId);
     }
 
     public function create_view(Request $request)
     {
         $boutiqueId = (int) $request->query('boutique_id', 0);
+        $boutique = $boutiqueId > 0
+            ? \App\Models\Boutique::findOrFail($boutiqueId)
+            : null;
 
         $availableProduits = $boutiqueId > 0
             ? Produit::where('boutique_id', $boutiqueId)->get()
@@ -38,7 +42,7 @@ class CatalogueController extends Controller
 
         $catalogueProduits = collect();
 
-        return view('catalogue.create', compact('availableProduits', 'catalogueProduits', 'boutiqueId'));
+        return view('catalogue.create', compact('availableProduits', 'catalogueProduits', 'boutiqueId', 'boutique'));
     }
 
     public function create(Request $request)
