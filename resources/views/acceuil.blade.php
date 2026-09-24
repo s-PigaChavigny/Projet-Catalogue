@@ -6,6 +6,7 @@
 	<title>ArtRef — Accueil</title>
 </head>
 <body>
+    @include('partials.header')
 
 	@php
 		$evenementsRecents = collect($evenement ?? $event ?? [])->sortByDesc('date')->take(2);
