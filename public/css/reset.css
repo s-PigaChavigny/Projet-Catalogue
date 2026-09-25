@@ -1,0 +1,42 @@
+/* Box-sizing moderne pour tous les éléments */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Suppression des marges et remplissages par défaut */
+body, h1, h2, h3, h4, p, figure, blockquote, dl, dd {
+  margin: 0;
+  padding: 0;
+}
+
+/* Suppression des styles des listes */
+ul, ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Configuration de base du body */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+}
+
+/* Fluidité des images et médias */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Héritage des polices pour les formulaires */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* Suppression des styles par défaut des liens */
+a {
+  text-decoration: none;
+  color: inherit;
+}

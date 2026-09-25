@@ -1,4 +1,4 @@
-/*couleurs*/
+/*base*/
 :root {
     --blanc: #fefae0;
     --noir: #131411;
@@ -8,22 +8,46 @@
     --orange-fonce: #bc6c25;
     --rouge-clair: #c74b29;
     --rouge-fonce: #792d18;
+    font-family: "Happy Monkey", system-ui;
+    font-weight: 400;
+    font-style: normal;
 }
 
 /* boutons */
 .button {
     padding: 10px 20px;
     border-radius: 5px;
+    border: none;
     text-decoration: none;
     display: inline-block;
     transition: background-color 0.3s ease;
+}
+
+/*titres*/
+
+.titre-section {
+    font-family: "Lemon", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.titre-card {
+    font-family: "Lemon", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.titre-page {
+    font-family: "Lemon", serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 /* colorway presets */
 
 .primary {
     background-color: var(--vert-clair);
-    color: var(--noir);
+    color: var(--blanc);
 }
 
 .primary:hover {
@@ -32,7 +56,7 @@
 
 .secondary {
     background-color: var(--orange-clair);
-    color: var(--noir);
+    color: var(--blanc);
 }
 
 .secondary:hover {
@@ -41,7 +65,7 @@
 
 .danger {
     background-color: var(--rouge-clair);
-    color: var(--noir);
+    color: var(--blanc);
 }
 
 .danger:hover {
