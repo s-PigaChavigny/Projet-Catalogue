@@ -30,7 +30,7 @@
                     <article class="card">
                         <span class="mini-tag">Événement</span>
                         <h2>{{ $evenement->name }}</h2>
-                        <p>{{ $evenement->description }}</p>
+                        <p>{{ \Illuminate\Support\Str::limit($evenement->description, 160) }}</p>
                         <p><strong>Date :</strong> {{ $evenement->date }}</p>
                         <p><strong>Lieu :</strong> {{ $evenement->lieu }}</p>
 

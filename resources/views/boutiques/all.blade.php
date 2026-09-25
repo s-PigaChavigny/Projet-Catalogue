@@ -29,7 +29,7 @@
                 @foreach($boutiques as $boutique)
                     <article class="card">
                         <h2>{{ $boutique->name }}</h2>
-                        <p>{{ $boutique->description }}</p>
+                        <p>{{ \Illuminate\Support\Str::limit($boutique->description, 160) }}</p>
 
                         <div class="actions">
                             <a href="{{ route('boutique.show', $boutique->id) }}" class="button primary">Voir</a>

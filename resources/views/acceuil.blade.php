@@ -28,7 +28,7 @@
 						<article class="home-card card-evenement">
 							<span class="home-card-tag">Événement</span>
 							<h3>{{ $evenement->name }}</h3>
-							<p>{{ $evenement->description ?? 'Découvrez cet événement dans notre sélection.' }}</p>
+							<p>{{ \Illuminate\Support\Str::limit($evenement->description ?? 'Découvrez cet événement dans notre sélection.', 160) }}</p>
 							<p class="home-card-meta"><strong>Date :</strong> {{ $evenement->date ?? 'Prochainement' }}</p>
 						</article>
 					@endforeach
@@ -50,7 +50,7 @@
 						<article class="home-card  card-boutique">
 							<span class="home-card-tag">Boutique</span>
 							<h3>{{ $boutique->name }}</h3>
-							<p>{{ $boutique->description ?? 'Artiste à découvrir.' }}</p>
+							<p>{{ \Illuminate\Support\Str::limit($boutique->description ?? 'Artiste à découvrir.', 160) }}</p>
 						</article>
 					@endforeach
 				</div>
