@@ -215,9 +215,9 @@ Route::prefix('user')->name('user.')->middleware('admin')->group(function () {
 Route::get('/admin', function () {
     return view('admin', [
         'evenements' => Evenement::all(),
-        'catalogues' => Catalogue::all(),
+        'catalogues' => Catalogue::with(['boutique', 'evenement'])->get(),
         'boutiques' => Boutique::all(),
-        'produits' => Produit::all(),
+        'produits' => Produit::with('boutique')->get(),
         'users' => User::all(),
     ]);
 })->middleware(['auth', 'admin'])->name('admin');
