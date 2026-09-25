@@ -49,6 +49,6 @@
 		</section>
 	</main>
 
-	<footer class="border-t border-white/10 px-6 py-8 text-center text-sm text-slate-500">© {{ date('Y') }} ArtRef</footer>
+	@include('partials.footer')
 </body>
 </html>

@@ -10,7 +10,7 @@
     <div class="form-shell">
         <form method="POST" action="{{ route('evenement.edit', $evenement->id) }}">
             @csrf
-            <h1 class="form-title">✏️ Modifier l'événement</h1>
+            <h1 class="form-title">Modifier l'événement</h1>
 
             <div class="field">
                 <label for="name">Nom</label>
@@ -48,5 +48,6 @@
             </div>
         </form>
     </div>
+    @include('partials.footer')
 </body>
 </html>

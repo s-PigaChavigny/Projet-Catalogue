@@ -13,5 +13,6 @@
         @include('users.form')
         <button type="submit">Créer</button>
     </form>
+    @include('partials.footer')
 </body>
 </html>
