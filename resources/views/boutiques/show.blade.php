@@ -65,5 +65,6 @@
         </div>
         <a class="back" href="{{ route('boutique.list') }}">← Retour à la liste</a>
     </div>
+    @include('partials.footer')
 </body>
 </html>

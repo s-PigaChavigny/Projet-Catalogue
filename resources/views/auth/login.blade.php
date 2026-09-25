@@ -50,5 +50,6 @@
             </div>
         </form>
     </div>
+    @include('partials.footer')
 </body>
 </html>
