@@ -7,11 +7,11 @@
 </head>
 <body>
     @include('partials.header')
-    <h1>Utilisateurs</h1>
+    <h1 class="titre-page">Utilisateurs</h1>
     <a class="button primary" href="{{ route('user.create') }}">Ajouter un utilisateur</a>
 
     @forelse($users as $user)
-        <article>
+        <article class="card">
             <h2>{{ $user->name }}</h2>
             <p>{{ $user->email }}</p>
             <p>Niveau : {{ $user->access_level }}</p>

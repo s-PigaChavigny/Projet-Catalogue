@@ -8,29 +8,31 @@
 <body>
     @include('partials.header')
 
-    <div>
+    <div class="profil">
         <h1>Mon profil</h1>
 
         <div>
             <div>
-                <p>{{ $user->name }}</p>
+                <p class="name">{{ $user->name }}</p>
                 <p>{{ $user->email }}</p>
             </div>
         </div>
 
-        <div>
+        <div class="profile-actions">
             @if($user->access_level === 'artist' && $boutique)
-                <a href="{{ route('boutique.show', $boutique->id) }}" class="button secondary">Ma boutique</a>
-                <a href="{{ route('boutique.produits', $boutique->id) }}" class="button secondary">Mes produits</a>
-                <a href="{{ route('catalogue.view_create', ['boutique_id' => $boutique->id]) }}" class="button primary">Créer un catalogue</a>
-                <a href="{{ route('produit.view_create', ['boutique_id' => $boutique->id]) }}" class="button primary">Ajouter un produit</a>
+                <div class="profile-links">
+                    <a href="{{ route('boutique.show', $boutique->id) }}" class="button secondary">Ma boutique</a>
+                    <a href="{{ route('boutique.produits', $boutique->id) }}" class="button secondary">Mes produits</a>
+                    <a href="{{ route('catalogue.view_create', ['boutique_id' => $boutique->id]) }}" class="button primary">Créer un catalogue</a>
+                    <a href="{{ route('produit.view_create', ['boutique_id' => $boutique->id]) }}" class="button primary">Ajouter un produit</a>
+                </div>
             @endif
-            <form method="POST" action="{{ route('logout') }}">
+            <form class="profile-logout" method="POST" action="{{ route('logout') }}">
                 @csrf
                 <button type="submit" class="button danger">Se déconnecter</button>
             </form>
         </div>
-
+        <div class="catalogue-profil">
         @if($user->access_level === 'artist' && $boutique)
             <h2>Catalogues de ma boutique</h2>
             @if($catalogues->isEmpty())
@@ -49,6 +51,8 @@
                 </ul>
             @endif
         @endif
+        </div>
+
     </div>
     @include('partials.footer')
 </body>

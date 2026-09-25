@@ -7,8 +7,8 @@
 </head>
 <body>
     @include('partials.header')
-    <div>
-        <div>
+    <div class="container">
+        <div class="topbar">
             <div>
                 <h1>Découvre les artistes!</h1>
             </div>
@@ -25,13 +25,13 @@
                 @endif
             </div>
         @else
-            <div>
+            <div class="grid">
                 @foreach($boutiques as $boutique)
-                    <article>
+                    <article class="card">
                         <h2>{{ $boutique->name }}</h2>
                         <p>{{ $boutique->description }}</p>
 
-                        <div>
+                        <div class="actions">
                             <a href="{{ route('boutique.show', $boutique->id) }}" class="button primary">Voir</a>
                             @if(auth()->check() && auth()->user()->access_level === 'admin')
                                 <a href="{{ route('boutique.edit_view', $boutique->id) }}" class="button secondary">Modifier</a>

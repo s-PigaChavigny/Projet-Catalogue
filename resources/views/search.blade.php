@@ -8,16 +8,16 @@
 <body>
     @include('partials.header')
 
-	<main>
-		<section>
+	<main class="container">
+		<section class="home-section">
 			<h1>Résultats pour « {{ $search }} »</h1>
 		</section>
 
-		<section aria-labelledby="evenements-title">
+		<section class="home-section" aria-labelledby="evenements-title">
 			<h2 id="evenements-title">Événements</h2>
-			<div>
+			<div class="grid">
 				@forelse ($evenements as $evenement)
-					<article>
+					<article class="card">
 						<h3>{{ $evenement->name }}</h3>
 						<p>{{ $evenement->description }}</p>
 						<p><strong>Date :</strong> {{ $evenement->date }}</p>
@@ -30,11 +30,11 @@
 			</div>
 		</section>
 
-		<section aria-labelledby="boutiques-title">
+		<section class="home-section" aria-labelledby="boutiques-title">
 			<h2 id="boutiques-title">Boutiques</h2>
-			<div>
+			<div class="grid">
 				@forelse ($boutiques as $boutique)
-					<article>
+					<article class="card">
 						<h3>{{ $boutique->name }}</h3>
 						<p>{{ $boutique->description }}</p>
 						<a class="button primary" href="{{ route('boutique.show', $boutique->id) }}">Voir la boutique</a>

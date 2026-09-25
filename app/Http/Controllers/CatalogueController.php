@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Catalogue;
+use App\Models\Boutique;
 use App\Models\Produit;
 use App\Models\Produit_Catalogue;
 
@@ -17,8 +18,9 @@ class CatalogueController extends Controller
             ->pluck('produit_id');
 
         $produits = Produit::whereIn('id', $produitIds)->get();
+        $boutique = Boutique::findOrFail($catalogue->boutique_id);
 
-        return view('catalogue.show', compact('catalogue', 'produits'));
+        return view('catalogue.show', compact('catalogue', 'boutique', 'produits'));
     }
 
     public function delete($id)
