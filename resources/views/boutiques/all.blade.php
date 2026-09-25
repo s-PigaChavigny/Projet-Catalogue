@@ -18,7 +18,7 @@
         </div>
 
         @if($boutiques->isEmpty())
-            <div>
+            <div class="empty">
                 Aucune boutique pour le moment. <br>
                 @if(auth()->check() && auth()->user()->access_level === 'admin')
                     <p>Crée la première boutique!</p>

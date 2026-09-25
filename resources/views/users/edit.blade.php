@@ -7,12 +7,16 @@
 </head>
 <body>
     @include('partials.header')
-    <h1>Modifier un utilisateur</h1>
-    <form method="POST" action="{{ route('user.edit', $user->id) }}">
-        @csrf
-        @include('users.form', ['editing' => true])
-        <button type="submit" class="button secondary">Enregistrer</button>
-    </form>
+    <div class="page">
+        <div class="form-shell">
+            <h1 class="form-title">Modifier un utilisateur</h1>
+            <form method="POST" action="{{ route('user.edit', $user->id) }}">
+                @csrf
+                @include('users.form', ['editing' => true])
+                <button type="submit" class="button secondary">Enregistrer</button>
+            </form>
+        </div>
+</div>
     @include('partials.footer')
 </body>
 </html>

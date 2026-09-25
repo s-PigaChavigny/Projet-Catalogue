@@ -7,13 +7,18 @@
 </head>
 <body>
     @include('partials.header')
-    <h1>{{ $user->name }}</h1>
-    <p>Email : {{ $user->email }}</p>
-    <p>Niveau : {{ $user->access_level }}</p>
-    <p>Boutique associée : {{ $user->boutique?->name ?? 'Aucune' }}</p>
-
-    <a class="button secondary" href="{{ route('user.edit_view', $user->id) }}">Modifier</a>
-    <a class="button secondary" href="{{ route('admin') }}">Retour au panel admin</a>
+    <div class="page">
+        <div class="card">
+            <h1>{{ $user->name }}</h1>
+            <p>Email : {{ $user->email }}</p>
+            <p>Niveau : {{ $user->access_level }}</p>
+            <p>Boutique associée : {{ $user->boutique?->name ?? 'Aucune' }}</p>
+            <div class="actions">
+                <a class="button secondary" href="{{ route('user.edit_view', $user->id) }}">Modifier</a>
+                <a class="button secondary" href="{{ route('admin') }}">Retour au panel admin</a>
+            </div>
+        </div>
+    </div>
     @include('partials.footer')
 </body>
 </html>

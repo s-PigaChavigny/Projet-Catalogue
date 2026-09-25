@@ -30,7 +30,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $user->delete();
-        return redirect()->route('user.list'); //a voir avec admin
+        return redirect()->route('admin');
     }
 
     public function create(Request $request)

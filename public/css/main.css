@@ -209,7 +209,6 @@ header nav form {
 .form-shell {
     border: 2px solid var(--orange-clair);
     border-radius: 8px;
-    background-color: var(--blanc);
 }
 
 .card {
@@ -247,7 +246,7 @@ header nav form {
 
 .form-shell {
     max-width: 720px;
-    margin: 0 auto;
+    margin: 40px auto;
     padding: 32px;
 }
 
@@ -303,10 +302,20 @@ textarea {
     font-weight: 700;
 }
 
+.product-list-header {
+    margin-bottom: 28px;
+}
+
+.product-list-header h1 {
+    margin: 0;
+    font-family: "Lemon", serif;
+}
+
 .catalogue-products-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: 16px;
+    margin-bottom: 40px;
 
 }
 
@@ -337,6 +346,154 @@ textarea {
 .catalogue-product-card .button {
     margin-top: auto;
     text-align: center;
+}
+
+.product-detail-card {
+    max-width: 900px;
+    margin: 0 auto 40px;
+    display: grid;
+    grid-template-columns: minmax(280px, 1fr) minmax(280px, 1fr);
+    overflow: hidden;
+    border: 2px solid var(--orange-clair);
+    border-radius: 8px;
+    background-color: var(--blanc);
+}
+
+.product-detail-media {
+    min-height: 360px;
+    background-color: var(--orange-clair);
+}
+
+.product-detail-media img,
+.product-detail-placeholder {
+    width: 100%;
+    height: 100%;
+    min-height: 360px;
+    object-fit: cover;
+}
+
+.product-detail-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    color: var(--vert-fonce);
+    font-weight: 700;
+    text-align: center;
+}
+
+.product-detail-content {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.product-detail-content h1,
+.product-detail-content p {
+    margin: 0;
+}
+
+.product-detail-content h1 {
+    font-family: "Lemon", serif;
+}
+
+.product-detail-price {
+    color: var(--vert-fonce);
+    font-size: 1.35rem;
+    font-weight: 700;
+}
+
+.product-detail-description {
+    line-height: 1.7;
+}
+
+.boutique-detail-card {
+    max-width: 900px;
+    margin: 0 auto 24px;
+    display: grid;
+    grid-template-columns: minmax(280px, 1fr) minmax(280px, 1fr);
+    overflow: hidden;
+    border: 2px solid var(--orange-clair);
+    border-radius: 8px;
+    background-color: var(--blanc);
+}
+
+.boutique-detail-media {
+    min-height: 360px;
+    background-color: var(--orange-clair);
+}
+
+.boutique-detail-media img,
+.boutique-detail-placeholder {
+    width: 100%;
+    height: 100%;
+    min-height: 360px;
+    object-fit: cover;
+}
+
+.boutique-detail-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    color: var(--vert-fonce);
+    font-weight: 700;
+    text-align: center;
+}
+
+.boutique-detail-content {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.boutique-detail-content h1,
+.boutique-detail-content p {
+    margin: 0;
+}
+
+.boutique-detail-content h1 {
+    font-family: "Lemon", serif;
+}
+
+.boutique-detail-description {
+    line-height: 1.7;
+}
+
+.boutique-detail-contact {
+    color: var(--vert-fonce);
+}
+
+.boutique-management-actions {
+    max-width: 900px;
+    margin: 0 auto 40px;
+}
+
+.boutique-catalogues-section {
+    margin-bottom: 32px;
+}
+
+.boutique-catalogues-section h2 {
+    margin-bottom: 20px;
+    font-family: "Lemon", serif;
+}
+
+.boutique-catalogues-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+}
+
+.boutique-catalogue-card {
+    min-height: 0;
+}
+
+.boutique-catalogue-card h3 {
+    margin: 0 0 16px;
 }
 
 .detail-card .content {
@@ -386,6 +543,28 @@ body > div ul {
 
     .form-shell,
     .detail-card .content {
+        padding: 24px;
+    }
+
+    .product-detail-card {
+        grid-template-columns: 1fr;
+    }
+
+    .boutique-detail-card {
+        grid-template-columns: 1fr;
+    }
+
+    .product-detail-media,
+    .product-detail-media img,
+    .product-detail-placeholder,
+    .boutique-detail-media,
+    .boutique-detail-media img,
+    .boutique-detail-placeholder {
+        min-height: 260px;
+    }
+
+    .product-detail-content,
+    .boutique-detail-content {
         padding: 24px;
     }
 }

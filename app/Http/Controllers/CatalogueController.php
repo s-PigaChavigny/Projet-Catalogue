@@ -68,8 +68,10 @@ class CatalogueController extends Controller
         $availableProduits = Produit::where('boutique_id', $catalogue->boutique_id)
             ->whereNotIn('id', $produitIds)
             ->get();
+        $boutiques = Boutique::all();
+        $boutique = Boutique::find($catalogue->boutique_id);
 
-        return view('catalogue.edit', compact('catalogue', 'catalogueProduits', 'availableProduits'));
+        return view('catalogue.edit', compact('catalogue', 'catalogueProduits', 'availableProduits', 'boutiques', 'boutique'));
     }
 
     public function edit(Request $request, $id)

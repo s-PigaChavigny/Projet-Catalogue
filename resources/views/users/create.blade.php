@@ -7,12 +7,16 @@
 </head>
 <body>
     @include('partials.header')
-    <h1>Créer un utilisateur</h1>
-    <form method="POST" action="{{ route('user.store') }}">
-        @csrf
-        @include('users.form')
-        <button type="submit" class="button primary">Créer</button>
-    </form>
+    <div class="page">
+        <div class="form-shell">
+            <h1 class="form-title">Créer un utilisateur</h1>
+            <form method="POST" action="{{ route('user.store') }}">
+                @csrf
+                @include('users.form')
+                <button type="submit" class="button primary">Créer</button>
+            </form>
+        </div>
+    </div>
     @include('partials.footer')
 </body>
 </html>

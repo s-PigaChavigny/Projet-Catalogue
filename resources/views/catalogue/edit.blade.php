@@ -16,12 +16,12 @@
             <div class="field">
                 <label for="boutique_id">Boutique</label>
                 @if(auth()->user()->access_level === 'artist')
-                    <p>{{ $produit->boutique?->name ?? 'Boutique associée' }}</p>
-                    <input type="hidden" name="boutique_id" value="{{ $produit->boutique_id }}">
+                    <p>{{ $boutique?->name ?? 'Boutique associée' }}</p>
+                    <input type="hidden" name="boutique_id" value="{{ $catalogue->boutique_id }}">
                 @else
                     <select id="boutique_id" name="boutique_id" required>
                         @foreach($boutiques as $boutique)
-                            <option value="{{ $boutique->id }}" @selected($produit->boutique_id == $boutique->id)>{{ $boutique->name }}</option>
+                            <option value="{{ $boutique->id }}" @selected($catalogue->boutique_id == $boutique->id)>{{ $boutique->name }}</option>
                         @endforeach
                     </select>
                 @endif
