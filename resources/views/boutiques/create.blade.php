@@ -7,34 +7,34 @@
 </head>
 <body>
     @include('partials.header')
-    <div class="form-shell">
+    <div>
         <form method="POST" action="{{ route('boutique.create') }}" enctype="multipart/form-data">
             @csrf
-            <h1 class="form-title">✨ Créer une boutique</h1>
+            <h1>✨ Créer une boutique</h1>
 
-            <div class="field">
+            <div>
                 <label for="name">Nom</label>
                 <input id="name" type="text" name="name" placeholder="Ex : La Maison des Étoiles" required>
             </div>
 
-            <div class="field">
+            <div>
                 <label for="description">Description</label>
-                <textarea id="description" name="description" placeholder="Décris ton boutique en quelques lignes..."></textarea>
+                <textarea id="description" name="description" placeholder="Décris ta boutique en quelques lignes..."></textarea>
             </div>
 
-            <div class="field">
+            <div>
                 <label for="contact_info">Contact</label>
                 <input id="contact_info" type="text" name="contact_info" placeholder="Téléphone, email ou adresse">
             </div>
 
-            <div class="field">
+            <div>
                 <label for="image">Image</label>
                 <input id="image" type="file" name="image" accept="image/*">
             </div>
 
-            <div class="actions-row">
+            <div>
                 <button type="submit" class="button primary">Enregistrer</button>
-                <a class="back" href="{{ route('boutique.list') }}">Retour</a>
+                <a class="button secondary" href="{{ route('boutique.list') }}">Retour</a>
             </div>
         </form>
     </div>

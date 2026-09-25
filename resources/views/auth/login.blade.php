@@ -7,10 +7,10 @@
 </head>
 <body>
     @include('partials.header')
-    <div class="form-shell">
+    <div>
         <form method="POST" action="{{ route('login') }}">
             @csrf
-            <h1 class="form-title">Connexion</h1>
+            <h1>Connexion</h1>
 
             @if (session('error'))
                 <div class="alert-error">
@@ -19,7 +19,7 @@
             @endif
 
             @if ($errors->any())
-                <div class="alert-error">
+                <div >
                     <ul>
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
@@ -28,25 +28,25 @@
                 </div>
             @endif
 
-            <div class="field">
+            <div>
                 <label for="email">Email</label>
                 <input id="email" type="email" name="email" value="{{ old('email') }}" required>
             </div>
 
-            <div class="field">
+            <div>
                 <label for="password">Mot de passe</label>
                 <input id="password" type="password" name="password" required>
             </div>
 
-            <div class="field checkbox-row">
+            <div>
                 <label>
                     <input type="checkbox" name="remember" value="1"> Se souvenir de moi
                 </label>
             </div>
 
-            <div class="actions-row">
+            <div>
                 <button type="submit" class="button primary">Se connecter</button>
-                <a href="{{ route('register') }}" class="back">Créer un compte</a>
+                <a href="{{ route('register') }}" class="button secondary">Créer un compte</a>
             </div>
         </form>
     </div>

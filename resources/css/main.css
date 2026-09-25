@@ -1,0 +1,50 @@
+/*couleurs*/
+:root {
+    --blanc: #fefae0;
+    --noir: #131411;
+    --vert-clair: #606c38;
+    --vert-fonce: #273518;
+    --orange-clair: #dda15e;
+    --orange-fonce: #bc6c25;
+    --rouge-clair: #c74b29;
+    --rouge-fonce: #792d18;
+}
+
+/* boutons */
+.button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+/* colorway presets */
+
+.primary {
+    background-color: var(--vert-clair);
+    color: var(--noir);
+}
+
+.primary:hover {
+    background-color: var(--vert-fonce);
+}
+
+.secondary {
+    background-color: var(--orange-clair);
+    color: var(--noir);
+}
+
+.secondary:hover {
+    background-color: var(--orange-fonce);
+}
+
+.danger {
+    background-color: var(--rouge-clair);
+    color: var(--noir);
+}
+
+.danger:hover {
+    background-color: var(--rouge-fonce);
+}
+

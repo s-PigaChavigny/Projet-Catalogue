@@ -14,24 +14,24 @@
             || (auth()->user()->access_level === 'artist' && (int) auth()->user()->boutique_id === (int) $boutique->id)
         );
     @endphp
-    <div class="page">
-        <div class="detail-card">
-            <div class="hero">
+    <div>
+        <div>
+            <div>
                 <h1>{{ $boutique->name }}</h1>
             </div>
 
-            <div class="content">
+            <div>
                 <p>{{ $boutique->description }}</p>
 
-                <div class="meta">
+                <div>
                     📞 Contact : {{ $boutique->contact_info }}
                 </div>
 
                 @if($boutique->image_path)
-                    <img class="image" src="{{ asset($boutique->image_path) }}" alt="{{ $boutique->name }}">
+                    <img src="{{ asset($boutique->image_path) }}" alt="{{ $boutique->name }}">
                 @endif
 
-                <div class="meta">
+                <div>
                     <h2>Catalogues associés</h2>
                     @if($catalogues->isNotEmpty())
                         <ul>
@@ -44,8 +44,8 @@
                                         {{ $catalogueEvenement?->name ?? 'Catalogue #' . $catalogue->id }}
                                     </a>
                                     @if($canManageCatalogues)
-                                        <a href="{{ route('catalogue.edit_view', $catalogue->id) }}">Modifier</a>
-                                        <a href="{{ route('catalogue.delete', $catalogue->id) }}">Supprimer</a>
+                                        <a href="{{ route('catalogue.edit_view', $catalogue->id) }}" class="button secondary">Modifier</a>
+                                        <a href="{{ route('catalogue.delete', $catalogue->id) }}" class="button danger">Supprimer</a>
                                     @endif
                                 </li>
                             @endforeach
@@ -63,7 +63,7 @@
                 @endif
             </div>
         </div>
-        <a class="back" href="{{ route('boutique.list') }}">← Retour à la liste</a>
+        <a class="button secondary" href="{{ route('boutique.list') }}">← Retour à la liste</a>
     </div>
     @include('partials.footer')
 </body>

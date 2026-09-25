@@ -7,34 +7,34 @@
 </head>
 <body>
     @include('partials.header')
-    <div class="form-shell">
+    <div>
         <form method="POST" action="{{ route('boutique.edit', $boutique->id) }}">
             @csrf
-            <h1 class="form-title">✏️ Modifier la boutique</h1>
+            <h1>✏️ Modifier la boutique</h1>
 
-            <div class="field">
+            <div>
                 <label for="name">Nom</label>
                 <input id="name" type="text" name="name" value="{{ $boutique->name }}" required>
             </div>
 
-            <div class="field">
+            <div>
                 <label for="description">Description</label>
                 <textarea id="description" name="description">{{ $boutique->description }}</textarea>
             </div>
 
-            <div class="field">
+            <div>
                 <label for="contact_info">Contact</label>
                 <input id="contact_info" type="text" name="contact_info" value="{{ $boutique->contact_info }}">
             </div>
 
-            <div class="field">
+            <div>
                 <label for="image_path">Image</label>
                 <input id="image_path" type="text" name="image_path" value="{{ $boutique->image_path }}">
             </div>
 
-            <div class="actions-row">
-                <button type="submit" class="button success">Mettre à jour</button>
-                <a class="back" href="{{ route('boutique.list') }}">Retour</a>
+            <div>
+                <button type="submit" class="button primary">Mettre à jour</button>
+                <a class="button secondary" href="{{ route('boutique.list') }}">Retour</a>
             </div>
         </form>
     </div>

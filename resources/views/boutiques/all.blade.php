@@ -7,36 +7,35 @@
 </head>
 <body>
     @include('partials.header')
-    <div class="container">
-        <div class="topbar">
+    <div>
+        <div>
             <div>
                 <h1>Découvre les artistes!</h1>
             </div>
             @if(auth()->check() && auth()->user()->access_level === 'admin')
-                <a class="cta" href="{{ route('boutique.view_create') }}">+ Ajouter une boutique</a>
+                <a href="{{ route('boutique.view_create') }}">+ Ajouter une boutique</a>
             @endif
         </div>
 
         @if($boutiques->isEmpty())
-            <div class="empty">
+            <div>
                 Aucune boutique pour le moment. <br>
                 @if(auth()->check() && auth()->user()->access_level === 'admin')
                     <p>Crée la première boutique!</p>
                 @endif
             </div>
         @else
-            <div class="grid">
+            <div>
                 @foreach($boutiques as $boutique)
-                    <article class="card">
-                        <span class="mini-tag">Boutique</span>
+                    <article>
                         <h2>{{ $boutique->name }}</h2>
                         <p>{{ $boutique->description }}</p>
 
-                        <div class="actions">
-                            <a class="link primary" href="{{ route('boutique.show', $boutique->id) }}">Voir</a>
+                        <div>
+                            <a href="{{ route('boutique.show', $boutique->id) }}" class="button primary">Voir</a>
                             @if(auth()->check() && auth()->user()->access_level === 'admin')
-                                <a class="link secondary" href="{{ route('boutique.edit_view', $boutique->id) }}">Modifier</a>
-                                <a class="link danger" href="{{ route('boutique.delete', $boutique->id) }}">Supprimer</a>
+                                <a href="{{ route('boutique.edit_view', $boutique->id) }}" class="button secondary">Modifier</a>
+                                <a href="{{ route('boutique.delete', $boutique->id) }} " class="button danger">Supprimer</a>
                             @endif
                         </div>
                     </article>

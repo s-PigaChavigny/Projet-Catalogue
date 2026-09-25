@@ -8,18 +8,17 @@
 <body>
     @include('partials.header')
 
-    <div class="profile-card">
+    <div>
         <h1>Mon profil</h1>
 
-        <div class="profile-info">
-            <!-- <div class="profile-avatar">{{ strtoupper(substr($user->name, 0, 1)) }}</div> -->
+        <div>
             <div>
-                <p class="profile-name">{{ $user->name }}</p>
-                <p class="profile-email">{{ $user->email }}</p>
+                <p>{{ $user->name }}</p>
+                <p>{{ $user->email }}</p>
             </div>
         </div>
 
-        <div class="actions-row profile-actions">
+        <div>
             @if($user->access_level === 'artist' && $boutique)
                 <a href="{{ route('boutique.show', $boutique->id) }}" class="button secondary">Ma boutique</a>
                 <a href="{{ route('boutique.produits', $boutique->id) }}" class="button secondary">Mes produits</a>
@@ -28,7 +27,7 @@
             @endif
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
-                <button type="submit" class="button primary">Se déconnecter</button>
+                <button type="submit" class="button danger">Se déconnecter</button>
             </form>
         </div>
 
@@ -43,8 +42,8 @@
                             <a href="{{ route('catalogue.show', $catalogue->id) }}">
                                 {{ $catalogue->evenement?->name ?? 'Événement non associé' }}
                             </a>
-                            <a href="{{ route('catalogue.edit_view', $catalogue->id) }}">Modifier</a>
-                            <a href="{{ route('catalogue.delete', $catalogue->id) }}">Supprimer</a>
+                            <a href="{{ route('catalogue.edit_view', $catalogue->id) }}" class="button secondary">Modifier</a>
+                            <a href="{{ route('catalogue.delete', $catalogue->id) }}" class="button danger">Supprimer</a>
                         </li>
                     @endforeach
                 </ul>
