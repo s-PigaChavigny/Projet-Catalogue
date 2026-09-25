@@ -60,10 +60,19 @@ class BoutiqueController extends Controller
     public function edit(Request $request, $id)
     {
         $boutique = Boutique::findOrFail($id);
-        $boutique->name = $request->name;
-        $boutique->description = $request->description;
-        $boutique->contact_info = $request->contact_info;
-        $boutique->image_path = $request->image_path;
+        $data = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'description' => ['nullable', 'string'],
+            'contact_info' => ['nullable', 'string', 'max:255'],
+            'image' => ['nullable', 'image', 'max:5120'],
+        ]);
+
+        $boutique->name = $data['name'];
+        $boutique->description = $data['description'] ?? null;
+        $boutique->contact_info = $data['contact_info'] ?? null;
+        if ($request->hasFile('image')) {
+            $boutique->image_path = UploadedImage::store($request->file('image'), 'boutique', $data['name']);
+        }
         $boutique->save();
         return redirect()->route('boutique.list');
     }

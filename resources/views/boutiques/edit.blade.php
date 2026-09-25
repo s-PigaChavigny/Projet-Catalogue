@@ -8,7 +8,7 @@
 <body>
     @include('partials.header')
     <div>
-        <form method="POST" action="{{ route('boutique.edit', $boutique->id) }}">
+        <form method="POST" action="{{ route('boutique.edit', $boutique->id) }}" enctype="multipart/form-data">
             @csrf
             <h1>Modifier la boutique</h1>
 
@@ -28,8 +28,8 @@
             </div>
 
             <div>
-                <label for="image_path">Image</label>
-                <input id="image_path" type="text" name="image_path" value="{{ $boutique->image_path }}">
+                <label for="image">Image</label>
+                <input id="image" type="file" name="image" accept="image/*">
             </div>
 
             <div>

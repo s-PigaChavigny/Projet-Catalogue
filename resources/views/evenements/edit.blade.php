@@ -8,7 +8,7 @@
 <body>
     @include('partials.header')
     <div class="form-shell">
-        <form method="POST" action="{{ route('evenement.edit', $evenement->id) }}">
+        <form method="POST" action="{{ route('evenement.edit', $evenement->id) }}" enctype="multipart/form-data">
             @csrf
             <h1 class="form-title">Modifier l'événement</h1>
 
@@ -33,8 +33,8 @@
             </div>
 
             <div class="field">
-                <label for="image_path">Image</label>
-                <input id="image_path" type="text" name="image_path" value="{{ $evenement->image_path }}">
+                <label for="image">Image</label>
+                <input id="image" type="file" name="image" accept="image/*">
             </div>
 
             <div class="field">

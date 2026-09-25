@@ -64,12 +64,23 @@ class EvenementController extends Controller
     public function edit(Request $request, $id)
     {
         $evenement = Evenement::findOrFail($id);
-        $evenement->name = $request->name;
-        $evenement->description = $request->description;
-        $evenement->date = $request->date;
-        $evenement->lieu = $request->lieu;
-        $evenement->image_path = $request->image_path;
-        $evenement->lien_web = $request->lien_web;
+        $data = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'description' => ['nullable', 'string'],
+            'date' => ['required', 'date'],
+            'lieu' => ['required', 'string', 'max:255'],
+            'image' => ['nullable', 'image', 'max:5120'],
+            'lien_web' => ['nullable', 'url', 'max:255'],
+        ]);
+
+        $evenement->name = $data['name'];
+        $evenement->description = $data['description'] ?? null;
+        $evenement->date = $data['date'];
+        $evenement->lieu = $data['lieu'];
+        if ($request->hasFile('image')) {
+            $evenement->image_path = UploadedImage::store($request->file('image'), 'evenement', $data['name']);
+        }
+        $evenement->lien_web = $data['lien_web'] ?? null;
         $evenement->save();
         return redirect()->route('evenement.list');
     }
