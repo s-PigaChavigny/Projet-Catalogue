@@ -24,7 +24,7 @@
                 <p>{{ $boutique->description }}</p>
 
                 <div>
-                    📞 Contact : {{ $boutique->contact_info }}
+                    Contact : {{ $boutique->contact_info }}
                 </div>
 
                 @if($boutique->image_path)

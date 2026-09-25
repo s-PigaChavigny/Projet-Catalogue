@@ -10,7 +10,7 @@
     <div>
         <form method="POST" action="{{ route('boutique.create') }}" enctype="multipart/form-data">
             @csrf
-            <h1>✨ Créer une boutique</h1>
+            <h1>Créer une boutique</h1>
 
             <div>
                 <label for="name">Nom</label>

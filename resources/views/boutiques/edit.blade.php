@@ -10,7 +10,7 @@
     <div>
         <form method="POST" action="{{ route('boutique.edit', $boutique->id) }}">
             @csrf
-            <h1>✏️ Modifier la boutique</h1>
+            <h1>Modifier la boutique</h1>
 
             <div>
                 <label for="name">Nom</label>
