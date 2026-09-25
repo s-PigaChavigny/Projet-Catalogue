@@ -50,10 +50,30 @@ Route::get('/accueil', function () {
 })->name('acceuil');
 
 
-Route::get('/search', function () {
-    $requests = Evenement::query()->get();
-    $requests = Boutique::query()->get();
-    return view('search', compact('requests'));
+Route::get('/search', function (Request $request) {
+    $search = trim((string) $request->query('q', ''));
+
+    $evenements = Evenement::query()
+        ->when($search !== '', function ($query) use ($search) {
+            $query->where(function ($query) use ($search) {
+                $query->where('name', 'like', "%{$search}%")
+                    ->orWhere('description', 'like', "%{$search}%")
+                    ->orWhere('lieu', 'like', "%{$search}%");
+            });
+        })
+        ->get();
+
+    $boutiques = Boutique::query()
+        ->when($search !== '', function ($query) use ($search) {
+            $query->where(function ($query) use ($search) {
+                $query->where('name', 'like', "%{$search}%")
+                    ->orWhere('description', 'like', "%{$search}%")
+                    ->orWhere('contact_info', 'like', "%{$search}%");
+            });
+        })
+        ->get();
+
+    return view('search', compact('search', 'evenements', 'boutiques'));
 })->name('search');
 
 Route::middleware('guest')->group(function () {
