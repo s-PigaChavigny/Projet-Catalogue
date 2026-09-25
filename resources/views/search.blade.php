@@ -9,24 +9,41 @@
     @include('partials.header')
 
 	<main>
-		<section class="mx-auto max-w-7xl px-6 py-24 lg:py-32">
-			<h1 class="max-w-3xl text-5xl font-black leading-tight md:text-7xl">Résultats de la recherche :</h1>
+		<section>
+			<h1>Résultats pour « {{ $search }} »</h1>
 		</section>
 
-		<section class="mx-auto max-w-7xl px-6 pb-20">
-			<div class="grid gap-6 md:grid-cols-2">
-				@forelse ($requests as $request)
-					<div>
-                        <h2>{{$request->q}}</h2>
-
-                    </div>
+		<section aria-labelledby="evenements-title">
+			<h2 id="evenements-title">Événements</h2>
+			<div>
+				@forelse ($evenements as $evenement)
+					<article>
+						<h3>{{ $evenement->name }}</h3>
+						<p>{{ $evenement->description }}</p>
+						<p><strong>Date :</strong> {{ $evenement->date }}</p>
+						<p><strong>Lieu :</strong> {{ $evenement->lieu }}</p>
+						<a href="{{ route('evenement.show', $evenement->id) }}">Voir l'événement</a>
+					</article>
 				@empty
-					<p class="text-slate-400">Pas de résultat.</p>
+					<p>Aucun événement trouvé.</p>
+				@endforelse
+			</div>
+		</section>
+
+		<section aria-labelledby="boutiques-title">
+			<h2 id="boutiques-title">Boutiques</h2>
+			<div>
+				@forelse ($boutiques as $boutique)
+					<article>
+						<h3>{{ $boutique->name }}</h3>
+						<p>{{ $boutique->description }}</p>
+						<a href="{{ route('boutique.show', $boutique->id) }}">Voir la boutique</a>
+					</article>
+				@empty
+					<p>Aucune boutique trouvée.</p>
 				@endforelse
 			</div>
 		</section>
 	</main>
-
-	<footer class="border-t border-white/10 px-6 py-8 text-center text-sm text-slate-500">© {{ date('Y') }} ArtRef</footer>
 </body>
 </html>
