@@ -13,7 +13,7 @@
     <p>Boutique associée : {{ $user->boutique?->name ?? 'Aucune' }}</p>
 
     <a class="button secondary" href="{{ route('user.edit_view', $user->id) }}">Modifier</a>
-    <a class="button secondary" href="{{ route('user.list') }}">Retour aux utilisateurs</a>
+    <a class="button secondary" href="{{ route('admin') }}">Retour au panel admin</a>
     @include('partials.footer')
 </body>
 </html>

@@ -42,6 +42,7 @@
         </div>
 
         <a class="button secondary" href="{{ route('boutique.show', $catalogue->boutique_id) }}">← Retour à la boutique</a>
+        <a class="button secondary" href="{{ route('evenement.show', $catalogue->evenement_id) }}">← Retour à l'événement</a>
     </div>
     @include('partials.footer')
 </body>

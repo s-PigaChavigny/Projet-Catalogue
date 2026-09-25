@@ -15,13 +15,16 @@
 
             <div class="field">
                 <label for="boutique_id">Boutique</label>
-                <select id="boutique_id" name="boutique_id" required>
-                    @foreach(App\Models\Boutique::all() as $boutique)
-                        <option value="{{ $boutique->id }}" {{ $catalogue->boutique_id == $boutique->id ? 'selected' : '' }}>
-                            {{ $boutique->name }}
-                        </option>
-                    @endforeach
-                </select>
+                @if(auth()->user()->access_level === 'artist')
+                    <p>{{ $produit->boutique?->name ?? 'Boutique associée' }}</p>
+                    <input type="hidden" name="boutique_id" value="{{ $produit->boutique_id }}">
+                @else
+                    <select id="boutique_id" name="boutique_id" required>
+                        @foreach($boutiques as $boutique)
+                            <option value="{{ $boutique->id }}" @selected($produit->boutique_id == $boutique->id)>{{ $boutique->name }}</option>
+                        @endforeach
+                    </select>
+                @endif
             </div>
 
             <div class="field">

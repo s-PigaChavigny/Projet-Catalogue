@@ -50,7 +50,7 @@ class UserController extends Controller
             "boutique_id" => $data['boutique_id'] ?? null,
             "password" => $data['password'],
         ]);
-        return redirect()->route('user.list');
+        return redirect()->route('admin');
     }
 
     public function edit_view($id)
@@ -79,6 +79,6 @@ class UserController extends Controller
             $user->password = $data['password'];
         }
         $user->save();
-        return redirect()->route('user.list');
+        return redirect()->route('admin');
     }
 }
