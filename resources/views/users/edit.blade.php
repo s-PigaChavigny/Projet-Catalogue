@@ -13,5 +13,6 @@
         @include('users.form', ['editing' => true])
         <button type="submit">Enregistrer</button>
     </form>
+    @include('partials.footer')
 </body>
 </html>

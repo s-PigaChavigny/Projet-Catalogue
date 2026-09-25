@@ -7,26 +7,27 @@
 </head>
 <body>
     @include('partials.header')
-    <div class="page">
-        <div class="detail-card">
-            <div class="hero">
+    <div>
+        <div>
+            <div>
                 <h1>{{ $produit->name }}</h1>
             </div>
 
-            <div class="content">
+            <div>
                 <p>{{ $produit->description }}</p>
 
                 @if($produit->image_path)
-                    <img class="image" src="{{ asset($produit->image_path) }}" alt="{{ $produit->name }}">
+                    <img src="{{ asset($produit->image_path) }}" alt="{{ $produit->name }}">
                 @endif
                 
-                <div class="meta">
+                <div>
                     Prix : {{ $produit->price }}
                 </div>
 
-                <a class="back" href="{{ route('boutique.show', $produit->boutique_id) }}">← Retour à la boutique</a>
+                <a href="{{ route('boutique.show', $produit->boutique_id) }}">← Retour à la boutique</a>
             </div>
         </div>
     </div>
+    @include('partials.footer')
 </body>
 </html>

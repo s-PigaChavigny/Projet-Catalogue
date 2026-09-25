@@ -22,5 +22,6 @@
     @empty
         <p>Aucun utilisateur.</p>
     @endforelse
+    @include('partials.footer')
 </body>
 </html>

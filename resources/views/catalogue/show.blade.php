@@ -33,5 +33,6 @@
 
         <a class="back" href="{{ route('boutique.show', $catalogue->boutique_id) }}">← Retour à la boutique</a>
     </div>
+    @include('partials.footer')
 </body>
 </html>
