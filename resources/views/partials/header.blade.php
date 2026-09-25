@@ -18,15 +18,15 @@
                 placeholder="Rechercher un lieu, événement..."
                 aria-label="Recherche"
             >
-            <button type="submit" class="button primary">Chercher</button>
+            <button type="submit" class="button secondary">Chercher</button>
         </form>
 
         <nav aria-label="Navigation principale">
             <a href="{{ route('evenement.list') }}">Événements</a>
             <a href="{{ route('boutique.list') }}">Boutiques</a>
-            <a href="{{ route('profile') }}">Mon profil</a>
+            <a href="{{ route('profile') }}" class="button primary">Mon profil</a>
             @if(Auth::check() && Auth::user()->access_level === 'admin')
-                <a href="{{ route('admin') }}">Admin</a>
+                <a href="{{ route('admin') }}" class="button danger">Admin</a>
             @endif
             @if(Auth::check())
                 <form method="POST" action="{{ route('logout') }}" style="display:inline;">
@@ -34,7 +34,7 @@
                     <button type="submit" class="button danger">Se déconnecter</button>
                 </form>
             @else
-                <a href="{{ route('login') }}">Se connecter</a>
+                <a href="{{ route('login') }}" class="button primary">Se connecter</a>
             @endif
         </nav>
     </div>
