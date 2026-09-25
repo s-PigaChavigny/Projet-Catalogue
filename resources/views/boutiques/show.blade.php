@@ -40,7 +40,7 @@
                                     $catalogueEvenement = \App\Models\Evenement::find($catalogue->evenement_id);
                                 @endphp
                                 <li>
-                                    <a href="{{ route('catalogue.show', $catalogue->id) }}">
+                                        <a class="button primary" href="{{ route('catalogue.show', $catalogue->id) }}">
                                         {{ $catalogueEvenement?->name ?? 'Catalogue #' . $catalogue->id }}
                                     </a>
                                     @if($canManageCatalogues)
@@ -63,7 +63,7 @@
                 @endif
             </div>
         </div>
-        <a class="button secondary" href="{{ route('boutique.list') }}">← Retour à la liste</a>
+                        <a class="button secondary" href="{{ route('boutique.list') }}">← Retour à la liste</a>
     </div>
     @include('partials.footer')
 </body>

@@ -12,8 +12,8 @@
     <p>Niveau : {{ $user->access_level }}</p>
     <p>Boutique associée : {{ $user->boutique?->name ?? 'Aucune' }}</p>
 
-    <a href="{{ route('user.edit_view', $user->id) }}">Modifier</a>
-    <a href="{{ route('user.list') }}">Retour aux utilisateurs</a>
+    <a class="button secondary" href="{{ route('user.edit_view', $user->id) }}">Modifier</a>
+    <a class="button secondary" href="{{ route('user.list') }}">Retour aux utilisateurs</a>
     @include('partials.footer')
 </body>
 </html>

@@ -13,7 +13,7 @@
                 <h1>Découvre les artistes!</h1>
             </div>
             @if(auth()->check() && auth()->user()->access_level === 'admin')
-                <a href="{{ route('boutique.view_create') }}">+ Ajouter une boutique</a>
+                <a href="{{ route('boutique.view_create') }}" class="button primary">+ Ajouter une boutique</a>
             @endif
         </div>
 

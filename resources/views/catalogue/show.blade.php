@@ -21,7 +21,7 @@
                     <ul>
                         @foreach($produits as $produit)
                             <li>
-                                <a href="{{ route('produit.show', $produit->id) }}">{{ $produit->name }}</a>
+                                <a class="button primary" href="{{ route('produit.show', $produit->id) }}">{{ $produit->name }}</a>
                             </li>
                         @endforeach
                     </ul>
@@ -31,7 +31,7 @@
             </div>
         </div>
 
-        <a class="back" href="{{ route('boutique.show', $catalogue->boutique_id) }}">← Retour à la boutique</a>
+        <a class="button secondary" href="{{ route('boutique.show', $catalogue->boutique_id) }}">← Retour à la boutique</a>
     </div>
     @include('partials.footer')
 </body>

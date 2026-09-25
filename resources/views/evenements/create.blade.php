@@ -44,7 +44,7 @@
 
             <div class="actions-row">
                 <button type="submit" class="button primary">Enregistrer</button>
-                <a class="back" href="{{ route('evenement.list') }}">Retour</a>
+                <a class="button secondary" href="{{ route('evenement.list') }}">Retour</a>
             </div>
         </form>
     </div>

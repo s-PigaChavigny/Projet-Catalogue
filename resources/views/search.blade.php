@@ -22,7 +22,7 @@
 						<p>{{ $evenement->description }}</p>
 						<p><strong>Date :</strong> {{ $evenement->date }}</p>
 						<p><strong>Lieu :</strong> {{ $evenement->lieu }}</p>
-						<a href="{{ route('evenement.show', $evenement->id) }}">Voir l'événement</a>
+						<a class="button primary" href="{{ route('evenement.show', $evenement->id) }}">Voir l'événement</a>
 					</article>
 				@empty
 					<p>Aucun événement trouvé.</p>
@@ -37,7 +37,7 @@
 					<article>
 						<h3>{{ $boutique->name }}</h3>
 						<p>{{ $boutique->description }}</p>
-						<a href="{{ route('boutique.show', $boutique->id) }}">Voir la boutique</a>
+						<a class="button primary" href="{{ route('boutique.show', $boutique->id) }}">Voir la boutique</a>
 					</article>
 				@empty
 					<p>Aucune boutique trouvée.</p>

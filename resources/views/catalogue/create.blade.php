@@ -40,7 +40,7 @@
 
             <div class="actions-row">
                 <button type="submit" class="button primary">Créer le catalogue</button>
-                <a href="{{ route('boutique.list') }}" class="back">Retour</a>
+                <a href="{{ route('boutique.list') }}" class="button secondary">Retour</a>
             </div>
         </form>
 

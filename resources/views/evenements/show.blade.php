@@ -43,7 +43,7 @@
                                     $catalogueBoutique = \App\Models\Boutique::find($catalogue->boutique_id);
                                 @endphp
                                 <li>
-                                    <a href="{{ route('catalogue.show', $catalogue->id) }}">
+                                    <a class="button primary" href="{{ route('catalogue.show', $catalogue->id) }}">
                                         {{ $catalogueBoutique?->name ?? 'Catalogue #' . $catalogue->id }}
                                     </a>
                                 </li>
@@ -54,7 +54,7 @@
                     @endif
                 </div>
 
-                <a class="back" href="{{ route('evenement.list') }}">← Retour à la liste</a>
+                <a class="button secondary" href="{{ route('evenement.list') }}">← Retour à la liste</a>
             </div>
         </div>
     </div>

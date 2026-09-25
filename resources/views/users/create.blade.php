@@ -11,7 +11,7 @@
     <form method="POST" action="{{ route('user.store') }}">
         @csrf
         @include('users.form')
-        <button type="submit">Créer</button>
+        <button type="submit" class="button primary">Créer</button>
     </form>
     @include('partials.footer')
 </body>

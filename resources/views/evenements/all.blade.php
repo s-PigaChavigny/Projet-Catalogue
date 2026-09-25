@@ -13,7 +13,7 @@
                 <h1>Consulte les prochains événements!</h1>
             </div>
             @if(auth()->check() && auth()->user()->access_level === 'admin')
-                <a class="cta" href="{{ route('evenement.view_create') }}">+ Ajouter un événement</a>
+                <a class="button primary" href="{{ route('evenement.view_create') }}">+ Ajouter un événement</a>
             @endif
         </div>
 
@@ -35,10 +35,10 @@
                         <p><strong>Lieu :</strong> {{ $evenement->lieu }}</p>
 
                         <div class="actions">
-                            <a class="link primary" href="{{ route('evenement.show', $evenement->id) }}">Voir</a>
+                            <a class="button primary" href="{{ route('evenement.show', $evenement->id) }}">Voir</a>
                             @if(auth()->check() && auth()->user()->access_level === 'admin')
-                                <a class="link secondary" href="{{ route('evenement.edit_view', $evenement->id) }}">Modifier</a>
-                                <a class="link danger" href="{{ route('evenement.delete', $evenement->id) }}">Supprimer</a>
+                                <a class="button secondary" href="{{ route('evenement.edit_view', $evenement->id) }}">Modifier</a>
+                                <a class="button danger" href="{{ route('evenement.delete', $evenement->id) }}">Supprimer</a>
                             @endif
                         </div>
                     </article>

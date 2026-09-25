@@ -11,7 +11,7 @@
     <form method="POST" action="{{ route('user.edit', $user->id) }}">
         @csrf
         @include('users.form', ['editing' => true])
-        <button type="submit">Enregistrer</button>
+        <button type="submit" class="button secondary">Enregistrer</button>
     </form>
     @include('partials.footer')
 </body>

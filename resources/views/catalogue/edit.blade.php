@@ -37,7 +37,7 @@
 
             <div class="actions-row">
                 <button type="submit" class="button primary">Enregistrer</button>
-                <a href="{{ route('catalogue.show', $catalogue->id) }}" class="back">Retour</a>
+                <a href="{{ route('catalogue.show', $catalogue->id) }}" class="button secondary">Retour</a>
             </div>
         </form>
 

@@ -39,7 +39,7 @@
                 <ul>
                     @foreach($catalogues as $catalogue)
                         <li>
-                            <a href="{{ route('catalogue.show', $catalogue->id) }}">
+                            <a class="button primary" href="{{ route('catalogue.show', $catalogue->id) }}">
                                 {{ $catalogue->evenement?->name ?? 'Événement non associé' }}
                             </a>
                             <a href="{{ route('catalogue.edit_view', $catalogue->id) }}" class="button secondary">Modifier</a>

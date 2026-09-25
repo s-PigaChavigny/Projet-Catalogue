@@ -51,9 +51,9 @@
                 <button type="submit" class="button primary">Enregistrer</button>
                 @php($selectedBoutiqueId = old('boutique_id', auth()->user()->boutique_id))
                 @if($selectedBoutiqueId)
-                    <a href="{{ route('boutique.produits', $selectedBoutiqueId) }}">Retour aux produits</a>
+                    <a class="button secondary" href="{{ route('boutique.produits', $selectedBoutiqueId) }}">Retour aux produits</a>
                 @else
-                    <a href="{{ route('boutique.list') }}">Retour aux boutiques</a>
+                    <a class="button secondary" href="{{ route('boutique.list') }}">Retour aux boutiques</a>
                 @endif
             </div>
         </form>

@@ -17,16 +17,16 @@
             <ul>
                 @foreach($produits as $produit)
                     <li>
-                        <a href="{{ route('produit.show', $produit->id) }}">{{ $produit->name }}</a>
+                        <a class="button primary" href="{{ route('produit.show', $produit->id) }}">{{ $produit->name }}</a>
                         <span>{{ $produit->price }}</span>
-                        <a href="{{ route('produit.edit_view', $produit->id) }}">Modifier</a>
-                        <a href="{{ route('produit.delete', $produit->id) }}">Supprimer</a>
+                        <a class="button secondary" href="{{ route('produit.edit_view', $produit->id) }}">Modifier</a>
+                        <a class="button danger" href="{{ route('produit.delete', $produit->id) }}">Supprimer</a>
                     </li>
                 @endforeach
             </ul>
         @endif
 
-        <a href="{{ route('profile') }}">Retour au profil</a>
+        <a class="button secondary" href="{{ route('profile') }}">Retour au profil</a>
     </main>
     @include('partials.footer')
 </body>

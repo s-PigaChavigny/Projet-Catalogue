@@ -24,7 +24,7 @@
                     Prix : {{ $produit->price }}
                 </div>
 
-                <a href="{{ route('boutique.show', $produit->boutique_id) }}">← Retour à la boutique</a>
+                <a class="button secondary" href="{{ route('boutique.show', $produit->boutique_id) }}">← Retour à la boutique</a>
             </div>
         </div>
     </div>
