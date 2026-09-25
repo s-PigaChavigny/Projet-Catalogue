@@ -7,22 +7,22 @@
 </head>
 <body>
     @include('partials.header')
-    <div class="form-shell">
+    <div>
         <form method="POST" action="{{ route('produit.edit', $produit->id) }}" enctype="multipart/form-data">
             @csrf
-            <h1 class="form-title">Modifier le produit</h1>
+            <h1>Modifier le produit</h1>
 
-            <div class="field">
+            <div>
                 <label for="name">Nom</label>
                 <input id="name" type="text" name="name" value="{{ $produit->name }}" required>
             </div>
 
-            <div class="field">
+            <div>
                 <label for="description">Description</label>
                 <textarea id="description" name="description">{{ $produit->description }}</textarea>
             </div>
 
-            <div class="field">
+            <div>
                 <label for="boutique_id">Boutique</label>
                 @if(auth()->user()->access_level === 'artist')
                     <p>{{ $produit->boutique?->name ?? 'Boutique associée' }}</p>
@@ -36,17 +36,17 @@
                 @endif
             </div>
 
-            <div class="field">
+            <div>
                 <label for="image">Image</label>
                 <input id="image" type="file" name="image" accept="image/*">
             </div>
 
-            <div class="field">
+            <div>
                 <label for="price">Prix</label>
                 <input id="price" type="number" name="price" value="{{ $produit->price }}">
             </div>
 
-            <div class="actions-row">
+            <div>
                 <button type="submit" class="button success">Mettre à jour</button>
                 <a class="back" href="{{ route('boutique.produits', $produit->boutique_id) }}">Retour aux produits</a>
             </div>

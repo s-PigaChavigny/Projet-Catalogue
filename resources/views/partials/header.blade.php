@@ -1,10 +1,10 @@
-<header class="site-header">
-    <div class="header-inner">
-        <div class="brand-block">
+<header>
+    <div>
+        <div>
             <a href="{{ url('/') }}" class="brand"><img src="{{ asset('images/logo_projet_catalogue.png') }}" alt="Logo ArtRef"></a>
         </div>
 
-        <form action="{{ route('search') }}" method="GET" class="search-form">
+        <form action="{{ route('search') }}" method="GET">
             <input
                 type="text"
                 name="q"
@@ -15,7 +15,7 @@
             <button type="submit">Chercher</button>
         </form>
 
-        <nav class="header-nav" aria-label="Navigation principale">
+        <nav aria-label="Navigation principale">
             <a href="{{ route('evenement.list') }}">Événements</a>
             <a href="{{ route('boutique.list') }}">Boutiques</a>
             <a href="{{ route('profile') }}">Mon profil</a>
@@ -25,7 +25,7 @@
             @if(Auth::check())
                 <form method="POST" action="{{ route('logout') }}" style="display:inline;">
                     @csrf
-                    <button type="submit" class="logout-button">Se déconnecter</button>
+                    <button type="submit">Se déconnecter</button>
                 </form>
             @else
                 <a href="{{ route('login') }}">Se connecter</a>

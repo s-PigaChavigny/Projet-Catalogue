@@ -1,7 +1,7 @@
-<footer class="site-footer">
-    <div class="footer-inner">
+<footer>
+    <div>
 
-        <nav class="footer-nav" aria-label="Navigation principale">
+        <nav>
             <a href="{{ route('evenement.list') }}">Événements</a>
             <a href="{{ route('boutique.list') }}">Boutiques</a>
             <a href="{{ route('profile') }}">Mon profil</a>

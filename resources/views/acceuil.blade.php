@@ -16,9 +16,9 @@
 
 		<section>
 			<div>
-				<h2 class="mt-2 text-3xl font-bold">Evenements récents</h2></div>
+				<h2>Evenements récents</h2></div>
 				@if($evenements->isEmpty())
-                    <p class="text-slate-400">Aucun événement récent pour le moment.</p>
+                    <p>Aucun événement récent pour le moment.</p>
                 @else
 					@foreach($evenements as $evenement)
                         <div>
@@ -41,7 +41,7 @@
 							<h3>{{ $boutique->name }}</h3>
 							<p>{{ $boutique->description ?? 'Artiste à découvrir.' }}</p></article>
 					@empty
-						<p class="text-slate-400">Les artistes seront bientôt présentés.</p>
+						<p>Les artistes seront bientôt présentés.</p>
 					@endforelse
 				</div>
                 <a href="{{ url('/boutique') }}">Voir tous les artistes →</a>

@@ -7,22 +7,22 @@
 </head>
 <body>
     @include('partials.header')
-    <div class="form-shell">
+    <div>
         <form method="POST" action="{{ route('produit.create') }}" enctype="multipart/form-data">
             @csrf
-            <h1 class="form-title">Créer un produit</h1>
+            <h1>Créer un produit</h1>
 
-            <div class="field">
+            <div>
                 <label for="name">Nom</label>
                 <input id="name" type="text" name="name" placeholder="Ex : Porte-clefs" required>
             </div>
 
-            <div class="field">
+            <div>
                 <label for="description">Description</label>
                 <textarea id="description" name="description" placeholder="Décris ton produit..."></textarea>
             </div>
 
-            <div class="field">
+            <div>
                 <label for="boutique_id">Boutique</label>
                 @if(auth()->user()->access_level === 'artist')
                     <p>{{ $boutiques->first()?->name ?? 'Aucune boutique associée' }}</p>
@@ -37,23 +37,23 @@
                 @endif
             </div>
 
-            <div class="field">
+            <div>
                 <label for="image">Image</label>
                 <input id="image" type="file" name="image" accept="image/*">
             </div>
             
-            <div class="field">
+            <div>
                 <label for="price">Prix</label>
                 <input id="price" type="number" name="price" required> <!--min="0.00" max="10000.00" step="0.01" -->
             </div>
 
-            <div class="actions-row">
+            <div>
                 <button type="submit" class="button primary">Enregistrer</button>
                 @php($selectedBoutiqueId = old('boutique_id', auth()->user()->boutique_id))
                 @if($selectedBoutiqueId)
-                    <a class="back" href="{{ route('boutique.produits', $selectedBoutiqueId) }}">Retour aux produits</a>
+                    <a href="{{ route('boutique.produits', $selectedBoutiqueId) }}">Retour aux produits</a>
                 @else
-                    <a class="back" href="{{ route('boutique.list') }}">Retour aux boutiques</a>
+                    <a href="{{ route('boutique.list') }}">Retour aux boutiques</a>
                 @endif
             </div>
         </form>
